@@ -5,3 +5,5 @@
 FairGround L
 
 1min ez dumped
+
+AstralParty and Lumin server SOON.
