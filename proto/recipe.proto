@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message RecipeMakeReq {
+int32 id = 1;
+int32 count = 2;
+}
+
+message RecipeMakeAck {
+repeated pb.Item changes = 1;
+}

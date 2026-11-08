@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message AbyssChallengeStageReq {
+int32 selectedStageIdx = 1;
+int32 abyssId = 2;
+repeated pb.TeamUsage teams = 3;
+bool byGM = 4;
+}
+
+message AbyssChallengeStageAck {
+string errMsg = 1;
+string transNo = 2;
+pb.CharacterRepository characterRepository = 3;
+pb.Abyss abyssData = 4;
+}
+
+message AbyssCompleteSubStageReq {
+int32 useSeconds = 1;
+pb.StageSettleInfo settleInfo = 2;
+}
+
+message AbyssCompleteSubStageAck {
+string errMsg = 1;
+bool completedAll = 2;
+pb.AbyssStage completedStageInfo = 3;
+bool unlockNewStage = 4;
+string transNo = 6;
+pb.Abyss abyssData = 7;
+repeated pb.UniversalItem stageRewards = 8;
+repeated pb.UniversalItem quickStageRewards = 9;
+reserved 5;
+}
+
+message AbyssTakeRewardReq {
+int32 targetStar = 1;
+int32 abyssId = 2;
+int32 stageIdx = 3;
+bool claimAll = 4;
+}
+
+message AbyssTakeRewardAck {
+repeated pb.UniversalItem items = 1;
+pb.Abyss abyssData = 2;
+}
+
+message AbyssRechallengeReq {
+bool onlyCurrentLayer = 1;
+pb.StageSettleInfo settleInfo = 2;
+}
+
+message AbyssRechallengeAck {
+string transNo = 1;
+pb.CharacterRepository characterRepository = 2;
+pb.Abyss abyssData = 3;
+}
+
+message AbyssLeaveReq {
+bool tmp = 1;
+pb.StageSettleInfo settleInfo = 2;
+}
+
+message AbyssLeaveAck {
+pb.Abyss abyssData = 1;
+}
+
+message AbyssComebackReq {
+}
+
+message AbyssComebackAck {
+pb.Abyss abyssData = 1;
+pb.CharacterRepository characterRepository = 2;
+}
+
+message AbyssFailureReq {
+pb.StageSettleInfo settleInfo = 1;
+}
+
+message AbyssFailureAck {
+pb.Abyss abyssData = 1;
+}
+
+message AbyssNtf {
+pb.Abyss abyss = 1;
+map<int32, pb.Abyss> abysses = 2;
+int32 lastChallengeAbyssID = 3;
+}

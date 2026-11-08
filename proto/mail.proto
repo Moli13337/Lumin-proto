@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+enum MailState {
+  UNREAD = 0;
+  READ = 1;
+  REWARD = 2;
+  DELETE = 3;
+  UNSEND = 4;
+}
+
+enum MailType {
+  ZERO_FILL = 0;
+  NORMAL = 1;
+  RARE = 2;
+}
+
+enum MailTag {
+  NOTAG = 0;
+  COLLECT = 1;
+}
+
+message MailChangeTagReq {
+int32 id = 1;
+pb.MailTag toTag = 2;
+}
+
+message MailChangeTagAck {
+}
+
+message MailChangeStateReq {
+repeated int32 ids = 1;
+pb.MailState toState = 2;
+}
+
+message MailChangeStateAck {
+repeated int32 ids = 1;
+repeated pb.UniversalItem gotItems = 2;
+}
+
+message MailUnlockReq {
+int32 id = 1;
+}
+
+message MailUnlockAck {
+pb.Mail mail = 1;
+}
+
+message MailOpenBoxReq {
+}
+
+message MailOpenBoxAck {
+map<int32, pb.Mail> mails = 1;
+}
+
+message MailNtf {
+map<int32, pb.Mail> mails = 1;
+repeated int32 lockTmplIds = 2;
+}
+
+message MailHasNewNtf {
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message LoginReq {
+string loginTicket = 1;
+string openId = 2;
+string appVersion = 3;
+int64 accountId = 4;
+pb.OperationalInfo operationalInfo = 5;
+string distinctID = 6;
+pb.TDClientData tdData = 7;
+bool isEditor = 8;
+string env = 9;
+}
+
+message LoginAck {
+string openId = 1;
+string loginKey = 2;
+int64 accountId = 3;
+string gateAddr = 4;
+int32 code = 5;
+string serverGroup = 6;
+int64 sdkAid = 7;
+bytes aesKey = 8;
+bool isEncry = 9;
+int32 fairTag = 10;
+string gateAddrBackup = 11;
+}

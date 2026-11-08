@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message WildBossTakeRewardReq {
+int32 interactionObjUID = 1;
+}
+
+message WildBossTakeRewardAck {
+repeated pb.UniversalItem gotRewards = 3;
+}
+
+message WildBossRewardBoughtReq {
+int32 count = 1;
+}
+
+message WildBossRewardBoughtAck {
+}

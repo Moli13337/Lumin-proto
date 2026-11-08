@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message EquipInfoNtf {
+repeated pb.Equip changes = 1;
+repeated int32 removeUids = 2;
+pb.ItemsWays changeWay = 3;
+}
+
+message GemInfoNtf {
+repeated pb.Gem changes = 1;
+repeated int32 removeUids = 2;
+pb.ItemsWays changeWay = 3;
+}
+
+message EquipCreateReq {
+int32 id = 1;
+}
+
+message EquipCreateAck {
+repeated pb.UniversalItem gotItems = 1;
+}
+
+message EquipEnhanceReq {
+int32 uid = 1;
+int32 level = 2;
+}
+
+message EquipEnhanceAck {
+}
+
+message EquipDismantleReq {
+repeated int32 uids = 1;
+}
+
+message EquipDismantleAck {
+repeated pb.Item items = 1;
+}
+
+message EquipWearReq {
+int32 uid = 1;
+int32 characterId = 2;
+}
+
+message EquipWearAck {
+}
+
+message EquipGemOperateReq {
+int32 equipUid = 1;
+int32 gemSlotId = 2;
+bool operate = 3;
+int32 gemUid = 4;
+}
+
+message EquipGemOperateAck {
+pb.Equip equip = 1;
+}
+
+message EquipLockReq {
+int32 uid = 1;
+bool isLock = 2;
+}
+
+message EquipLockAck {
+}
+
+message GemFusionReq {
+repeated int32 uids = 1;
+}
+
+message GemFusionAck {
+repeated pb.UniversalItem gotItems = 1;
+}
+
+message GemLockReq {
+int32 uid = 1;
+bool isLock = 2;
+}
+
+message GemLockAck {
+}

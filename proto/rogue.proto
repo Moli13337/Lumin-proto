@@ -1,0 +1,157 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message RogueInfoNtf {
+pb.RogueInfo RogueInfo = 1;
+}
+
+message RogueUnlockTalentTreeCodeReq {
+int32 coreId = 1;
+}
+
+message RogueUnlockTalentTreeCodeAck {
+}
+
+message RogueUpdateTalentTreeNodeReq {
+int32 nodeId = 1;
+}
+
+message RogueUpdateTalentTreeNodeAck {
+}
+
+message RogueChallengeReq {
+int32 modeId = 1;
+int32 coreId = 2;
+pb.TeamUsage battleCharacter = 3;
+int64 seed = 4;
+}
+
+message RogueChallengeAck {
+pb.RogueGameInfo gameInfo = 1;
+}
+
+message RogueEnterNextRoomReq {
+pb.RogueRoomType roomType = 1;
+map<int32, pb.RogueItem> item = 2;
+map<int32, int32> leftUse = 3;
+map<int32, int32> battleInfo = 4;
+map<int32, int32> effectInfo = 5;
+}
+
+message RogueEnterNextRoomAck {
+int32 coin = 1;
+pb.RogueRoomInfo roomInfo = 2;
+}
+
+message RogueBuyItemReq {
+bool isBuy = 1;
+int32 itemId = 2;
+bool isReplace = 3;
+int32 replacePosition = 4;
+}
+
+message RogueBuyItemAck {
+}
+
+message RogueRecycleItemReq {
+int32 itemId = 1;
+}
+
+message RogueRecycleItemAck {
+}
+
+message RogueHangGameReq {
+}
+
+message RogueHangGameAck {
+}
+
+message RogueContinueGameReq {
+}
+
+message RogueContinueGameAck {
+pb.CharacterRepository battleCharacter = 1;
+pb.Team rougeTeam = 2;
+map<int32, pb.RogueItem> bagItems = 3;
+}
+
+message RogueFinishGameReq {
+pb.RogueFinishType finishType = 1;
+}
+
+message RogueFinishGameAck {
+int32 talentTreePoint = 1;
+repeated pb.Item items = 2;
+repeated int32 clearedMode = 3;
+int32 weeklyCoinGain = 4;
+}
+
+message RogueCoinRewardReq {
+}
+
+message RogueCoinRewardAck {
+}
+
+message RogueCoinNtf {
+int32 coin = 1;
+int32 gainCoin = 2;
+int32 costCoin = 3;
+}
+
+message RogueTeamChangeReq {
+pb.TeamUsage team = 1;
+}
+
+message RogueTeamChangeAck {
+pb.CharacterRepository rogueTeam = 1;
+}
+
+message RoguePickUpItemReq {
+int32 itemId = 1;
+bool isReplace = 2;
+int32 replacePosition = 3;
+}
+
+message RoguePickUpItemAck {
+}
+
+message RogueModifyCoinReq {
+bool isAdd = 1;
+int32 coinNum = 2;
+}
+
+message RogueModifyCoinAck {
+}
+
+message RogueSetRoomFinishedReq {
+}
+
+message RogueSetRoomFinishedAck {
+}
+
+message RogueTalentTreeNtf {
+pb.RogueTalentTree talentTree = 1;
+}
+
+message RogueEnterRoomReq {
+int32 gameWorldId = 1;
+}
+
+message RogueEnterRoomAck {
+pb.RogueGameInfo gameInfo = 1;
+}
+
+message RogueGmNextRoomReq {
+pb.RogueRoomType roomType = 1;
+}
+
+message RogueGmNextRoomAck {
+pb.RogueRoomInfo roomInfo = 2;
+}
+
+message RogueGmAddItemReq {
+int32 itemId = 1;
+}

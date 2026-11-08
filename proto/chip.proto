@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message ChipNtf {
+repeated pb.Chip changes = 1;
+repeated int32 removeUids = 2;
+pb.ItemsWays changeWay = 3;
+}
+
+message ChipWearPosition {
+int32 uid = 1;
+int32 slot = 2;
+int32 idx = 3;
+}
+
+message ChipWearReq {
+int32 characterId = 1;
+repeated pb.ChipWearPosition chips = 2;
+}
+
+message ChipWearAck {
+}
+
+message ChipUnloadReq {
+int32 characterId = 1;
+int32 chipUid = 2;
+}
+
+message ChipUnloadAck {
+}
+
+message ChipLockReq {
+int32 uid = 1;
+bool lock = 2;
+}
+
+message ChipLockAck {
+}
+
+message ChipLevelUpReq {
+int32 uid = 1;
+}
+
+message ChipLevelUpAck {
+repeated pb.Item changes = 1;
+}
+
+message ChipDecomposeReq {
+repeated int32 uids = 1;
+}
+
+message ChipDecomposeAck {
+repeated pb.Item items = 1;
+}
+
+message ChipCancelNewFlagReq {
+repeated int32 uids = 1;
+}
+
+message ChipCancelNewFlagAck {
+}

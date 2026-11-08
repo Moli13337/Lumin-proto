@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+enum LoungeTriggerPointType {
+  LOUNGE_TRIGGER_POINT_TYPE_INVITE_CHARACTER = 0;
+  LOUNGE_TRIGGER_POINT_TYPE_INTERACT_CHARACTER = 1;
+  LOUNGE_TRIGGER_POINT_TYPE_STORY = 2;
+}
+
+message LoungeEnterReq {
+}
+
+message LoungeEnterAck {
+pb.Lounge loungeInfo = 1;
+}
+
+message LoungeLeaveReq {
+}
+
+message LoungeLeaveAck {
+}
+
+message GiftToCharacterReq {
+repeated pb.Item gifts = 1;
+int32 characterID = 2;
+}
+
+message GiftToCharacterAck {
+int32 characterID = 1;
+int32 gotLikeability = 2;
+int32 curLikeabilityLv = 3;
+int32 curLikeabilityExp = 4;
+repeated pb.UniversalItem likeabilityRewards = 5;
+int32 todayGiftCount = 6;
+}
+
+message LoungeTriggerPointReq {
+int32 pointID = 1;
+pb.LoungeTriggerPointType triggerType = 2;
+int32 characterID = 3;
+}
+
+message LoungeTriggerPointAck {
+pb.Lounge loungeInfo = 1;
+int32 pointID = 2;
+int32 gotLikeability = 3;
+int32 curLikeabilityLv = 4;
+int32 curLikeabilityExp = 5;
+repeated pb.UniversalItem likeabilityRewards = 6;
+}

@@ -1,0 +1,172 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message MissionUpdateStateReq {
+pb.MissionState mission = 1;
+}
+
+message MissionUpdateStateAck {
+repeated pb.Item rewards = 1;
+}
+
+message AcceptMissionReq {
+int32 id = 1;
+}
+
+message AcceptMissionAck {
+bool ok = 1;
+string errorMessage = 2;
+}
+
+message MissionNtf {
+repeated pb.MissionState mission = 1;
+}
+
+message MissionMonsterDieReq {
+int32 id = 1;
+}
+
+message MissionMonsterDieAck {
+}
+
+message MissionUpdateBluePrintReq {
+pb.MissionState mission = 1;
+}
+
+message MissionUpdateBluePrintAck {
+}
+
+message MissionApplyItemReq {
+int32 missionId = 1;
+int32 collectionId = 2;
+}
+
+message MissionApplyItemAck {
+repeated pb.Item items = 1;
+}
+
+message MissionRNtf {
+map<int64, pb.MissionR> missions = 1;
+}
+
+message NewMissionRNtf {
+map<int64, pb.MissionR> missions = 1;
+}
+
+message MissionStateUpdateNtf {
+int64 missionID = 1;
+pb.MissionStateEnum state = 2;
+repeated pb.UniversalItem rewards = 3;
+}
+
+message MissionStateUpdateReq {
+int64 missionID = 1;
+pb.MissionStateEnum state = 2;
+}
+
+message MissionStateUpdateAck {
+}
+
+message MissionConditionStateNtf {
+int64 missionID = 1;
+int32 conditionID = 2;
+int32 progress = 3;
+bool success = 4;
+}
+
+message MissionConditionActionPairCompleteNtf {
+int64 missionID = 1;
+int32 pairIdx = 2;
+pb.MissionStateEnum state = 3;
+}
+
+message MissionConditionUpdateReq {
+int64 missionID = 1;
+int32 conditionID = 2;
+bool success = 3;
+}
+
+message MissionConditionUpdateAck {
+}
+
+message MissionFlowCompleteNtf {
+int64 missionID = 1;
+pb.MissionFlow flow = 2;
+}
+
+message MissionFlowUpdateNtf {
+int64 missionID = 1;
+pb.MissionFlow flow = 2;
+}
+
+message MissionAcceptReq {
+int64 missionID = 1;
+}
+
+message MissionAcceptAck {
+}
+
+message MissionExpireNtf {
+repeated int64 missionIDList = 1;
+}
+
+message ReplacMissionTrackingReq {
+int64 missionID = 1;
+}
+
+message ReplacMissionTrackingAck {
+}
+
+message MissionTrackingNtf {
+int64 missionID = 1;
+}
+
+message MissionRAcceptReq {
+int64 missionID = 1;
+}
+
+message MissionRAcceptAck {
+}
+
+message MissionRUpdateFlowReq {
+int64 missionID = 1;
+pb.MissionFlow flow = 2;
+pb.MissionFlowType flowType = 3;
+}
+
+message MissionRUpdateFlowAck {
+pb.MissionFlow flow = 1;
+}
+
+message MissionRConditionUpdateReq {
+int64 missionID = 1;
+int32 flowIndex = 2;
+pb.TriggerCondition condition = 3;
+pb.MissionFlowType flowType = 4;
+}
+
+message MissionRConditionUpdateAck {
+}
+
+message MissionRActionUpdateReq {
+int64 missionID = 1;
+int32 flowIndex = 2;
+int32 pairIdx = 3;
+pb.TriggerAction action = 4;
+pb.MissionFlowType flowType = 5;
+}
+
+message MissionRActionUpdateAck {
+}
+
+message MissionRUpdateStateReq {
+int64 missionID = 1;
+pb.MissionStateEnum state = 2;
+}
+
+message MissionRUpdateStateAck {
+repeated pb.UniversalItem rewards = 1;
+}

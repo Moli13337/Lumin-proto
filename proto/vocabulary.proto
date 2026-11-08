@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message VocabularyNtf {
+map<int32, bool> GroupState = 1;
+map<int32, bool> ContentState = 2;
+map<int32, pb.TextLibraryContent> ContentInfo = 3;
+}
+
+message VocabularyUnlockContentReq {
+repeated int32 idList = 1;
+}
+
+message VocabularyUnlockContentAck {
+map<int32, bool> GroupState = 1;
+map<int32, bool> ContentState = 2;
+map<int32, pb.TextLibraryContent> ContentInfo = 3;
+}
+
+message VocabularyReadContentReq {
+repeated int32 idList = 1;
+}
+
+message VocabularyReadContentAck {
+map<int32, bool> ContentState = 1;
+map<int32, pb.TextLibraryContent> ContentInfo = 2;
+}
+
+message VocabularyRememberGroupStateReq {
+map<int32, bool> GroupState = 1;
+}
+
+message VocabularyRememberGroupStateAck {
+}

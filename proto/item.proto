@@ -1,0 +1,132 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message ItemNtf {
+repeated pb.Item changes = 1;
+pb.ItemsWays changeWay = 2;
+}
+
+message ItemAffectObject {
+int32 objectType = 1;
+repeated int32 objIDs = 2;
+}
+
+message UseItemsReq {
+pb.OperationItem item = 1;
+pb.ItemAffectObject affectObj = 2;
+}
+
+message UseItemsAck {
+bool ok = 1;
+pb.ItemAffectObject affectObj = 2;
+repeated pb.Item obtainItems = 3;
+repeated pb.UniversalItem gotItems = 4;
+}
+
+message DelItemsReq {
+int32 itemType = 1;
+repeated pb.OperationItem items = 2;
+}
+
+message DelItemsAck {
+bool ok = 1;
+}
+
+message ComposeItemReq {
+pb.Item targetItem = 1;
+}
+
+message ComposeItemAck {
+}
+
+message LittleItemsNtf {
+pb.LittleItems littleItems = 1;
+}
+
+message UseLittleItemReq {
+int32 id = 1;
+}
+
+message UseLittleItemAck {
+}
+
+message PotionUseReq {
+}
+
+message PotionUseAck {
+int32 usedCount = 1;
+}
+
+message PotionLevelUpReq {
+int32 id = 1;
+int32 toLevel = 2;
+}
+
+message PotionLevelUpAck {
+}
+
+message PotionUpdateAdditiveReq {
+int32 potionId = 1;
+repeated int32 additives = 2;
+}
+
+message PotionUpdateAdditiveAck {
+}
+
+message PotionRecoverUseCountReq {
+int32 count = 1;
+}
+
+message PotionRecoverUseCountAck {
+int32 usedCount = 1;
+}
+
+message PotionInfoNtf {
+pb.PotionInfo potionInfo = 1;
+}
+
+message PotionNtf {
+repeated pb.PotionItem potions = 1;
+}
+
+message PotionChangeNtf {
+int32 sceneEnum = 1;
+map<int32, pb.PotionItem> potions = 2;
+bool remove = 3;
+}
+
+message SyncLittleItemsReq {
+pb.LittleItemsShortcutInfo info = 1;
+}
+
+message SyncLittleItemsAck {
+}
+
+message TreasureInfoNtf {
+pb.TreasureInfo treasureInfo = 1;
+}
+
+message RecycleItemsReq {
+repeated pb.UniversalItem items = 1;
+}
+
+message RecycleItemsAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message OpenBagChestReq {
+int32 itemId = 1;
+int32 count = 2;
+int32 chooseIndex = 3;
+}
+
+message OpenBagChestAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message BagChestRewardSelectCountNtf {
+pb.BagChestRewardSelectData data = 1;
+}

@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message CreatOrderReq {
+int32 goodsId = 1;
+string currency = 2;
+repeated int32 indexs = 3;
+int32 itemId = 4;
+int32 subShopId = 5;
+}
+
+message CreatOrderAck {
+string orderId = 1;
+int32 money = 2;
+string callbackUrl = 3;
+string extra = 4;
+string sign = 5;
+}
+
+message PayActionProcessReq {
+}
+
+message PayActionProcessAck {
+}
+
+message OrderShipNtf {
+string orderId = 1;
+repeated pb.UniversalItem gotItems = 2;
+}
+
+message OrderShipDisplayedReq {
+string orderId = 1;
+}
+
+message OrderShipDisplayedAck {
+}

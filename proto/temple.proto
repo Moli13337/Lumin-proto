@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message TempleUnlockReq {
+int32 templeId = 1;
+}
+
+message TempleUnlockAck {
+pb.Temple templeInfo = 1;
+}
+
+message TempleChallengeReq {
+int32 templeId = 1;
+pb.TeamUsage team = 2;
+}
+
+message TempleChallengeAck {
+string transNo = 1;
+pb.CharacterRepository characterRepository = 2;
+pb.Temple templeInfo = 3;
+}
+
+message TempleRechallengeReq {
+pb.StageSettleInfo settleInfo = 1;
+}
+
+message TempleRechallengeAck {
+string transNo = 1;
+pb.CharacterRepository characterRepository = 2;
+pb.Temple templeInfo = 3;
+}
+
+message TempleLeaveReq {
+pb.StageSettleInfo settleInfo = 1;
+}
+
+message TempleLeaveAck {
+}
+
+message TempleCompleteStageReq {
+pb.StageSettleInfo settleInfo = 1;
+}
+
+message TempleCompleteStageAck {
+repeated pb.Item rewards = 1;
+pb.Temple newInfo = 2;
+repeated pb.UniversalItem gotRewards = 3;
+}
+
+message TempleFailureReq {
+pb.StageSettleInfo settleInfo = 1;
+}
+
+message TempleFailureAck {
+pb.Temple templeInfo = 1;
+}
+
+message TempleSelectBuffReq {
+int32 roomId = 1;
+int32 buffId = 2;
+}
+
+message TempleSelectBuffAck {
+}
+
+message TempleTakeStarRewardReq {
+int32 areaId = 1;
+int32 starNum = 2;
+}
+
+message TempleTakeStarRewardAck {
+repeated pb.Item rewards = 1;
+pb.TempleArea templeAreaInfo = 2;
+}
+
+message TempleInfoNtf {
+pb.TempleInfo info = 1;
+}

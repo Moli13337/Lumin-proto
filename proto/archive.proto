@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message ArchiveNtf {
+pb.Archive archive = 1;
+}
+
+message ArchiveChangeNtf {
+pb.Archive archive = 1;
+}
+
+message ArchiveUpdateReq {
+repeated int32 unlockMonsters = 1;
+}
+
+message ArchiveUpdateAck {
+}
+
+message ArchiveReadReq {
+pb.Archive archive = 1;
+}
+
+message ArchiveReadAck {
+}

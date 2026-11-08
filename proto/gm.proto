@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+
+package pb;
+
+message GmActionProcessReq {
+string cmd = 1;
+}
+
+message GmActionProcessAck {
+string result = 1;
+}
+
+message GmChat {
+int32 ts = 1;
+string msg = 2;
+bool gm = 3;
+}
+
+message GmChatsReq {
+}
+
+message GmChatsAck {
+repeated pb.GmChat chats = 1;
+}
+
+message GmChatReq {
+string msg = 1;
+}
+
+message GmChatAck {
+}
+
+message GmChatNtf {
+pb.GmChat chat = 1;
+}

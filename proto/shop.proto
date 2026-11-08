@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message ShopNtf {
+map<int32, pb.Shop> shops = 1;
+}
+
+message ShopBuyCommodityReq {
+int32 shopId = 1;
+int32 subShopIdx = 2;
+int32 commodityIdx = 3;
+int32 buyNum = 4;
+}
+
+message ShopBuyCommodityAck {
+repeated pb.UniversalItem gotItems = 1;
+}
+
+message DiamondDataNtf {
+pb.DiamondData diamondData = 1;
+}
+
+message BundleDataNtf {
+pb.BundleData bundleData = 1;
+}
+
+message ExchangeFreeDiamondReq {
+int32 num = 1;
+}
+
+message ExchangeFreeDiamondAck {
+}
+
+message ExchangeCommodityReq {
+int32 commodityId = 1;
+repeated int32 indexs = 2;
+int32 subShopId = 3;
+}
+
+message ExchangeCommodityAck {
+repeated pb.UniversalItem gotItems = 1;
+}

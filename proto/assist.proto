@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message AssistNtf {
+repeated pb.Assist changes = 1;
+}
+
+message AssistSkinNtf {
+int32 assist = 1;
+pb.AssistSkin skin = 2;
+}
+
+message AssistDyeingReq {
+int32 assist = 1;
+int32 skin = 2;
+int32 color = 3;
+}
+
+message AssistDyeingAck {
+repeated pb.Item changes = 1;
+}
+
+message AssistSetupReq {
+int32 assist = 1;
+int32 skin = 2;
+int32 color = 3;
+}
+
+message AssistSetupAck {
+}
+
+message AssistEquipReq {
+int32 assist = 1;
+}
+
+message AssistEquipAck {
+}

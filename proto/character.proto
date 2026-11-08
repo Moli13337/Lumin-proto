@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message CharacterNtf {
+repeated pb.Character changes = 1;
+pb.ItemsWays changeWay = 2;
+}
+
+message CharacterChangeNtf {
+int32 sceneEnum = 1;
+map<int32, pb.Character> characters = 2;
+map<int32, pb.Character> extraCharacters = 3;
+}
+
+message CharacterDependChangeNtf {
+int32 sceneEnum = 1;
+pb.CharacterDependSnapshot characterDependSnapshot = 2;
+pb.CharacterDependSnapshot extraCharacterDependSnapshot = 3;
+bool remove = 4;
+}
+
+message CharacterLevelUpReq {
+int32 id = 1;
+repeated pb.Item spends = 2;
+}
+
+message CharacterLevelUpAck {
+repeated pb.Item changes = 1;
+}
+
+message CharacterStageReq {
+int32 id = 1;
+int32 toStage = 2;
+}
+
+message CharacterStageAck {
+repeated pb.Item changes = 1;
+}
+
+message CharacterTakeStageRewardReq {
+int32 id = 1;
+int32 stage = 2;
+}
+
+message CharacterTakeStageRewardAck {
+repeated pb.Item items = 1;
+}
+
+message CharacterStatusSyncReq {
+map<int32, pb.CharacterStatus> cs = 1;
+int32 battleCharacterId = 2;
+}
+
+message CharacterStatusSyncAck {
+}
+
+message CharacterUpgradeSkillGroupReq {
+int32 characterId = 1;
+int32 skillGroupId = 2;
+}
+
+message CharacterUpgradeSkillGroupAck {
+repeated pb.UniversalItem gotItems = 1;
+}
+
+message CharacterUpgradeConstellationReq {
+int32 characterId = 1;
+int32 constellationId = 2;
+}
+
+message CharacterUpgradeConstellationAck {
+}
+
+message CharacterReturnConstellationReq {
+int32 characterId = 1;
+int32 constellationId = 2;
+}
+
+message CharacterReturnConstellationAck {
+}
+
+message CharacterUpdateConstellationReq {
+int32 characterId = 1;
+repeated int32 constellationIds = 2;
+}
+
+message CharacterUpdateConstellationAck {
+int32 constellationNum = 1;
+}
+
+message CharacterEliteLevelUpReq {
+int32 characterId = 1;
+int32 pointId = 2;
+int32 toLevel = 3;
+}
+
+message CharacterEliteLevelUpAck {
+}
+
+message CharacterEliteResetReq {
+int32 characterId = 1;
+int32 pointId = 2;
+int32 pointNode = 3;
+}
+
+message CharacterEliteResetAck {
+}

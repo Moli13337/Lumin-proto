@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message SystemOpenReq {
+int32 id = 1;
+}
+
+message SystemOpenAck {
+int32 id = 1;
+}
+
+message SystemOpenNtf {
+repeated int32 openSystems = 1;
+repeated int32 readSystems = 2;
+}
+
+message SystemReadDoneReq {
+int32 id = 1;
+}
+
+message SystemReadDoneAck {
+int32 id = 1;
+}
+
+message SystemTakeLevelRewardReq {
+int32 level = 1;
+bool all = 2;
+}
+
+message SystemTakeLevelRewardAck {
+repeated pb.Item items = 1;
+}
+
+message SystemGuideTakeChapterRewardReq {
+int32 chapterId = 1;
+}
+
+message SystemGuideTakeChapterRewardAck {
+repeated pb.UniversalItem gotItems = 1;
+}
+
+message SystemTakeLevelRewardNtf {
+repeated int32 levels = 1;
+map<int32, bool> systemGuideChapter = 2;
+}
+
+message SystemStatusNtf {
+repeated pb.SystemStatus systems = 1;
+}
+
+message SystemStatusChangeNtf {
+pb.SystemStatus system = 1;
+}

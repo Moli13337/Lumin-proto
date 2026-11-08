@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+enum PickErr {
+  PICK_NO_ERR = 0;
+  PICK_UNKNOWN_ERR = 1;
+  PICK_BAG_FULL_ERR = 2;
+}
+
+message DropItemPickPackageReq {
+uint32 id = 1;
+}
+
+message DropItemPickPackageAck {
+repeated pb.DropItemPickInfo dropRes = 1;
+int32 wid = 2;
+repeated pb.UniversalItem gotRewards = 3;
+}
+
+message DropItemPickItemReq {
+repeated int32 uids = 1;
+}
+
+message DropItemPickInfo {
+int32 uid = 1;
+pb.PickErr err = 2;
+}
+
+message DropItemPickItemAck {
+repeated pb.DropItemPickInfo dropRes = 1;
+int32 wid = 2;
+}
+
+message DropItemAddNtf {
+int32 wid = 1;
+int32 dropSoureUid = 2;
+repeated pb.DropItem ditems = 3;
+uint32 packageId = 4;
+}

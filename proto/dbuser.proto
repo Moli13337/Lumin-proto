@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+option csharp_namespace = "ACT.Game.Data";
+
+message DBUser {
+int64 id = 1;
+int64 accountId = 2;
+int32 serverIndex = 3;
+string openId = 4;
+int32 sdkAid = 5;
+int64 createTime = 6;
+int64 lastUpdateTime = 7;
+int64 enterTime = 8;
+int64 offlineTime = 9;
+int32 level = 10;
+int32 exp = 11;
+int32 worldLevel = 12;
+string nickName = 13;
+int64 coin = 14;
+int32 power = 15;
+int64 freeDiamond = 16;
+int64 costDiamond = 17;
+uint32 gender = 18;
+pb.TookLevelRewards tookLevelRewards = 19;
+pb.OpenedSystems openedSystems = 20;
+pb.Items items = 21;
+pb.Attributes attributes = 22;
+pb.Characters characters = 23;
+pb.Weapons weapons = 24;
+pb.Chips chips = 25;
+pb.Handbook handbooks = 26;
+pb.Missions missions = 27;
+pb.Assists assists = 28;
+pb.Scenes scenes = 29;
+pb.PlayerProfile profile = 30;
+pb.Equips equips = 31;
+pb.Gems gems = 32;
+pb.PlayerComposeData composeData = 33;
+pb.MapDbModel mapInfo = 34;
+pb.LoungeDbModel loungeInfo = 35;
+pb.BattlePassDbModel battlePass = 36;
+pb.VocabularyDbModel vocabularyInfo = 37;
+pb.TDClientData td_client_data = 38;
+pb.TimeLimitItems timeLimitItems = 39;
+repeated pb.SkinInfo skins = 40;
+pb.DiamondData diamondData = 41;
+pb.BundleData bundleData = 42;
+repeated pb.MonthlyPassEntry monthly_passes = 43;
+repeated pb.EffectDressInfo effectDresses = 44;
+}

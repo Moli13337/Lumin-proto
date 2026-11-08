@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message RaidEnterReq {
+int32 id = 1;
+pb.TeamUsage team = 2;
+int32 rate = 3;
+bool byGM = 4;
+}
+
+message RaidEnterAck {
+string transNo = 1;
+pb.CharacterRepository characterRepository = 2;
+pb.Raid raidInfo = 3;
+}
+
+message RaidRechallengeReq {
+pb.StageSettleInfo settleInfo = 1;
+}
+
+message RaidRechallengeAck {
+string transNo = 1;
+pb.CharacterRepository characterRepository = 2;
+pb.Raid raidInfo = 3;
+}
+
+message RaidPlayerDeadReq {
+}
+
+message RaidPlayerDeadAck {
+pb.Raid raidInfo = 1;
+}
+
+message RaidTakeRewardsReq {
+int32 rewardRate = 1;
+pb.StageSettleInfo settleInfo = 2;
+}
+
+message RaidTakeRewardsAck {
+repeated pb.Item items = 1;
+repeated pb.UniversalItem gotItems = 2;
+pb.Raid raidInfo = 3;
+}
+
+message RaidSweepReq {
+int32 id = 1;
+int32 num = 2;
+}
+
+message RaidSweepAck {
+repeated pb.Item items = 1;
+pb.Raid raidInfo = 2;
+repeated pb.UniversalItem gotItems = 3;
+}
+
+message RaidLeaveReq {
+pb.StageSettleInfo settleInfo = 1;
+}
+
+message RaidLeaveAck {
+pb.Raid raidInfo = 1;
+}
+
+message RaidFailureReq {
+pb.StageSettleInfo settleInfo = 1;
+}
+
+message RaidFailureAck {
+pb.Raid raidInfo = 1;
+}
+
+message RaidNtf {
+map<int32, pb.Raid> raids = 1;
+int32 challengingRaidId = 2;
+}

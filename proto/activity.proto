@@ -1,0 +1,210 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message ActivityRefreshReq {
+}
+
+message ActivityRefreshAck {
+}
+
+message ActivityLevelRewardNtf {
+pb.ActivitLevelRewardInfo activitLevelRewardInfo = 1;
+}
+
+message ActivityGetLevelRewardReq {
+int32 activityId = 1;
+int32 activityGroup = 2;
+int32 activityChallenge = 3;
+}
+
+message ActivityGetLevelRewardAck {
+repeated pb.UniversalItem gotItems = 1;
+}
+
+message ActivityDoubleDungeonNtf {
+pb.ActivitDoubleDungeonInfo activitDoubleDungeonInfo = 1;
+}
+
+message ActivityDoubleDungeonRewardReq {
+int32 activityId = 1;
+int32 rewardId = 2;
+}
+
+message ActivityDoubleDungeonRewardAck {
+}
+
+message ActivitySignInNtf {
+pb.ActivitSignInInfo activitSignInInfo = 1;
+}
+
+message ActivitySignInChooseRewardReq {
+int32 activityId = 1;
+int32 groupId = 2;
+int32 challengeId = 3;
+repeated int32 rewards = 4;
+}
+
+message ActivitySignInChooseRewardAck {
+}
+
+message ActivitySignInRewardReq {
+int32 activityId = 1;
+int32 groupId = 2;
+int32 challengeId = 3;
+}
+
+message ActivitySignInRewardAck {
+repeated pb.Item items = 1;
+repeated pb.UniversalItem gotItems = 2;
+}
+
+message ActivityAbyssNtf {
+pb.ActivitAbyssInfo activitAbyssInfo = 1;
+}
+
+message ActivityAbyssRewardReq {
+int32 activityId = 1;
+int32 activityGroup = 2;
+int32 activityChallenge = 3;
+}
+
+message ActivityAbyssRewardAck {
+repeated pb.Item items = 1;
+}
+
+message ActivityCombinationNtf {
+pb.ActivitCombinationInfo activitCombinationInfo = 1;
+}
+
+message ActivityCombinationRewardReq {
+int32 activityId = 1;
+int32 activityGroup = 2;
+}
+
+message ActivityCombinationRewardAck {
+repeated pb.Item items = 1;
+}
+
+message ActivityTempleChallengeNtf {
+pb.ActivitTempleChallengeInfo activitTempleChallengeInfo = 1;
+}
+
+message ActivityRoleTrialNtf {
+pb.ActivitRoleTrialInfo activitRoleTrialInfo = 1;
+}
+
+message ActivityRoleTrialRewardReq {
+int32 activityId = 1;
+int32 activityGroup = 2;
+int32 activityChallenge = 3;
+}
+
+message ActivityRoleTrialRewardAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message ActivitySkinTrialNtf {
+pb.ActivitSkinTrialInfo activitSkinTrialInfo = 1;
+}
+
+message ActivitySkinTrialRewardReq {
+int32 activityId = 1;
+int32 activityGroup = 2;
+int32 activityChallenge = 3;
+}
+
+message ActivitySkinTrialRewardAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message ActivityDailyLotteryNtf {
+pb.ActivityDailyLotteryInfo activityDailyLotteryInfo = 1;
+}
+
+message ActivityDailyLotteryGachaReq {
+int32 activityId = 1;
+int32 lotteryPoolId = 2;
+int32 gachaConut = 3;
+}
+
+message ActivityDailyLotteryGachaAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message ActivityTotalRechargeNtf {
+pb.ActivityTotalRechargeInfo activityTotalRechargeInfo = 1;
+}
+
+message ActivityTotalRechargeRewardReq {
+int32 activityId = 1;
+int32 activityGroup = 2;
+int32 activityChallenge = 3;
+}
+
+message ActivityTotalRechargeRewardAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message ActivityKujiNtf {
+pb.ActivityKujiInfo activityKujiInfo = 1;
+}
+
+message ActivityKujiRewardReq {
+int32 activityId = 1;
+int32 activityGroup = 2;
+}
+
+message ActivityKujiRewardAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message ActivityKujiDrawReq {
+int32 activityId = 1;
+}
+
+message ActivityKujiDrawAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message ActivityMainStoryNtf {
+pb.ActivityMainStoryInfo activityMainStoryInfo = 1;
+}
+
+message ActivityMainStoryRewardReq {
+int32 activityId = 1;
+int32 activityGroup = 2;
+}
+
+message ActivityMainStoryRewardAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message ActivityMapExploreNtf {
+pb.ActivityMapExploreInfo activityMapExploreInfo = 1;
+}
+
+message ActivityMapExploreRewardReq {
+int32 activityId = 1;
+int32 activityGroup = 2;
+}
+
+message ActivityMapExploreRewardAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message ActivityMultiDeviceNtf {
+pb.ActivityMultiDeviceInfo activityMultiDeviceInfo = 1;
+}
+
+message ActivityMultiDeviceRewardReq {
+int32 activityId = 1;
+int32 activityGroup = 2;
+int32 activityChallenge = 3;
+}
+
+message ActivityMultiDeviceRewardAck {
+repeated pb.UniversalItem items = 1;
+}

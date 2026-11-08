@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message TriggerInteractEventReq {
+int32 wid = 1;
+repeated pb.StateChangeInfo states = 2;
+repeated pb.Item items = 3;
+pb.PBVector3 position = 4;
+pb.CharacterSyncInfo characterInfo = 5;
+repeated pb.MapViewLogInfo mapViewLogInfo = 6;
+pb.MapViewRecordParam mapViewRecordParam = 7;
+int32 chunkID = 8;
+}
+
+message StateChangeInfo {
+int32 uid = 1;
+int32 stateId = 2;
+string eventName = 3;
+}
+
+message TriggerInteractEventAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message ServiceSaveStateNtf {
+int32 wid = 1;
+repeated pb.ServiceSaveState changes = 2;
+}
+
+message ServiceBehaveNtf {
+int32 wid = 1;
+repeated pb.ServiceBehave changes = 2;
+}
+
+message SceneChallengeBossReq {
+int32 difficultyLevel = 1;
+int32 interactionUid = 2;
+}
+
+message SceneChallengeBossAck {
+}
+
+message SceneTakeChallengeBossRewardReq {
+int32 interactionUid = 1;
+}
+
+message SceneTakeChallengeBossRewardAck {
+repeated pb.Item rewards = 1;
+}
+
+message SceneResetChallengeBossReq {
+}
+
+message SceneResetChallengeBossAck {
+}
+
+message TriggerTeleportPointReq {
+}
+
+message TriggerTeleportPointAck {
+}

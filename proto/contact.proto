@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+enum ContactGMMode {
+  CONTACT_GM_MODE_NONE = 0;
+  CONTACT_GM_MODE_NORMAL = 1;
+  CONTACT_GM_MODE_OPEN_UI = 2;
+}
+
+message ContactNtf {
+pb.Contact contact = 1;
+}
+
+message ContactCharacterMessageNtf {
+int32 sessionId = 1;
+repeated int32 newMessages = 2;
+bool sessionFinish = 3;
+int32 updateTimeStamp = 4;
+repeated int64 newMessagesInt64 = 5;
+}
+
+message ContactCharacterSessionNtf {
+repeated pb.ContactCharacterSession sessions = 1;
+pb.ContactGMMode gmMode = 2;
+}
+
+message ContactChooseOptionReq {
+int32 sessionId = 1;
+int32 chooseIdx = 2;
+}
+
+message ContactChooseOptionAck {
+}
+
+message ContactChatWithPlayerReq {
+pb.ContactPlayerMessage message = 1;
+}
+
+message ContactChatWithPlayerAck {
+int32 code = 1;
+}
+
+message ContactPlayerMessageNtf {
+pb.ContactPlayerMessage message = 1;
+}

@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+import "common.proto";
+import "dbuser.proto";
+
+package pb;
+option csharp_namespace = "ACT.Game.Data";
+
+message DBBriefUser {
+int64 id = 1;
+int32 serverIndex = 2;
+string openId = 3;
+int64 createTime = 4;
+string nickName = 5;
+int32 level = 6;
+int64 offlineTime = 7;
+int64 accountId = 8;
+}
+
+message UserList {
+repeated pb.DBUser users = 1;
+}
+
+message QueryUserByAccountIdReq {
+int64 accountId = 1;
+string dbName = 2;
+}
+
+message QueryUserByOpenIdReq {
+string openId = 1;
+string dbName = 2;
+}
+
+message QueryUserBySDKAidReq {
+int64 sdkAid = 1;
+string dbName = 2;
+}
+
+message QueryUserRsp {
+pb.ErrorAck error = 1;
+pb.DBUser user = 2;
+}
+
+message SaveUserReq {
+pb.DBUser user = 1;
+string dbName = 2;
+}
+
+message SaveUserRsp {
+pb.ErrorAck error = 1;
+int64 affectedRows = 2;
+}

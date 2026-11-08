@@ -1,0 +1,135 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message MapSetupCustomFlagReq {
+pb.MapCustomFlag cf = 1;
+}
+
+message MapSetupCustomFlagAck {
+pb.MapCustomFlag cf = 1;
+}
+
+message MapModifyCustomFlagTypeReq {
+int32 areaID = 1;
+int32 flagID = 2;
+int32 newTyp = 3;
+}
+
+message MapModifyCustomFlagTypeAck {
+pb.MapCustomFlag latestCustomFlag = 1;
+}
+
+message MapDelCustomFlagReq {
+int32 areaID = 1;
+int32 flagID = 2;
+}
+
+message MapDelCustomFlagAck {
+}
+
+message MapFetchCustomFlagInfoReq {
+int32 areaID = 1;
+}
+
+message MapFetchCustomFlagInfoAck {
+pb.MapCustomFlags areaFlags = 1;
+}
+
+message MapCustomFlagNtf {
+map<int32, pb.MapCustomFlags> areaFlags = 1;
+}
+
+message MapSetupTracePointReq {
+pb.MapTrancePoint point = 1;
+bool cancel = 2;
+}
+
+message MapSetupTracePointAck {
+}
+
+message MapTrancePointNtf {
+pb.MapTrancePoint point = 1;
+}
+
+message MapAreaDivinePupilsNtf {
+map<int32, pb.DivinePupil> pupils = 1;
+}
+
+message MapSubmitDivinePupilReq {
+int32 areaID = 1;
+int32 count = 2;
+}
+
+message MapSubmitDivinePupilAck {
+repeated pb.UniversalItem gotItems = 1;
+pb.DivinePupil latestDivinePupilInfo = 2;
+}
+
+message MapClaimDivinePupilRewardReq {
+int32 areaID = 1;
+}
+
+message MapClaimDivinePupilRewardAck {
+repeated pb.UniversalItem gotItems = 1;
+pb.DivinePupil latestDivinePupilInfo = 2;
+}
+
+message MapAreaUnlockNtf {
+map<int32, pb.MapAreaExplore> areaExplore = 1;
+}
+
+message MapAreaExploreQueryReq {
+}
+
+message MapAreaExploreQueryAck {
+map<int32, pb.MapAreaExplore> areaExplore = 1;
+}
+
+message MapExploreClaimRewardReq {
+int32 areaType = 1;
+int32 areaId = 2;
+}
+
+message MapExploreClaimRewardAck {
+repeated pb.UniversalItem gotItems = 1;
+pb.MapAreaExplore areaExplore = 2;
+}
+
+message LightMapBlockReq {
+int32 wid = 1;
+int32 id = 2;
+}
+
+message LightMapBlockAck {
+}
+
+message LightedMapBlocksNtf {
+int32 wid = 1;
+repeated int32 ids = 2;
+}
+
+message MapViewLogReq {
+string layer = 1;
+pb.PBVector2Int position = 2;
+}
+
+message MapViewLogAck {
+}
+
+message MapViewCompleteLayerReq {
+string layer = 1;
+int32 areaID = 2;
+int32 chunkID = 3;
+}
+
+message MapViewCompleteLayerAck {
+}
+
+message MapViewNtf {
+int32 wid = 1;
+pb.MapViewInfo mapView = 2;
+pb.MapViewFullInfo mapViewFull = 3;
+}

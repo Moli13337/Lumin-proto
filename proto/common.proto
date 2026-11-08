@@ -1,0 +1,2514 @@
+syntax = "proto3";
+
+
+package pb;
+option csharp_namespace = "ACT.Game.Data";
+
+enum StageStateEnum {
+  STAGE_STATE_OUT = 0;
+  STAGE_STATE_ONGOING = 1;
+  STAGE_STATE_FAILURE = 2;
+  STAGE_STATE_SUCCESS = 3;
+  STAGE_STATE_TMP_LEAVE = 4;
+}
+
+enum ItemsWays {
+  ITEMSWAY_ENTERGAME = 0;
+  ITEMSWAY_GET_TOPUP = 1;
+  ITEMSWAY_GET_MENGJING_EXCHANGE = 2;
+  ITEMSWAY_GET_MONTHLY_PASS = 3;
+  ITEMSWAY_GET_PASS = 4;
+  ITEMSWAY_GET_WEAPON_MONTHLY_PASS = 5;
+  ITEMSWAY_GET_XINGHUI_EXCHANGE = 6;
+  ITEMSWAY_GET_YUHUI_EXCHANGE = 7;
+  ITEMSWAY_GET_SHOP_GIFT = 8;
+  ITEMSWAY_GET_ABYSS_FIRST_COMPLETE = 9;
+  ITEMSWAY_GET_ROGUE = 10;
+  ITEMSWAY_GET_DAILY_MISSION = 11;
+  ITEMSWAY_GET_ACTIVITY = 12;
+  ITEMSWAY_GET_MAIL = 13;
+  ITEMSWAY_GET_MAIN_MISSION_GUID = 14;
+  ITEMSWAY_GET_MISSION = 15;
+  ITEMSWAY_GET_MONSTER_KILL = 16;
+  ITEMSWAY_GET_TREASURE = 17;
+  ITEMSWAY_GET_DAILY_RAID = 18;
+  ITEMSWAY_GET_ACTIVITY_RAID = 19;
+  ITEMSWAY_GET_BOSS_RAID = 20;
+  ITEMSWAY_GET_MISSION_RAID = 21;
+  ITEMSWAY_GET_ONCE_RAID = 22;
+  ITEMSWAY_GET_SHOP_EXCHANGE = 23;
+  ITEMSWAY_GET_ACHIEVEMENT = 24;
+  ITEMWAYS_GET_CHARACTER_INIT_WEAPON = 25;
+  ITEMSWAY_GET_COLLECTION = 26;
+  ITEMSWAY_GET_DESTROY = 27;
+  ITEMSWAY_GET_GM = 28;
+  ITEMSWAY_GET_ABYSS_STARS = 29;
+  ITEMWAYS_GET_OVER_PLAYER_EXP = 30;
+  ITEMWAYS_GET_GACHA = 31;
+  ITEMWAYS_GET_ITEM_USE = 32;
+  ITEMWAYS_GET_ITEM_COMPOSE = 33;
+  ITEMWAYS_GET_CHARACTER_STAGE_REWARD = 34;
+  ITEMWAYS_GET_PLAYER_LEVEL_REWARD = 35;
+  ITEMWAYS_GET_POWER_BUY = 36;
+  ITEMWAYS_GET_RAID_FIRST_COMPLETE = 37;
+  ITEMWAYS_GET_DAILY_PLAYER_ACTIVITY = 38;
+  ITEMWAYS_GET_GUIDE_REWARDS = 39;
+  ITEMWAYS_GET_ACTIVE_POINT_DAILY_REWARDS = 40;
+  ITEMWAYS_GET_ACTIVE_POINT_EXTRA_REWARDS = 41;
+  ITEMWAYS_GET_WORLD_BOSS_REWARDS = 42;
+  ITEMWAYS_GET_WORLD_TREASURE_REWARDS = 43;
+  ITEMWAYS_GET_CHIP_DECOMPOSE = 44;
+  ITEMWAYS_GET_REDEEM_CODE = 45;
+  ITEMWAYS_GET_EQUIP_CREATE = 46;
+  ITEMWAYS_GET_EQUIP_DISMANTLE = 47;
+  ITEMWAYS_GET_GEM_FUSION = 48;
+  ITEMWAYS_GET_TEMPLE_STAR_REWARD = 49;
+  ITEMWAYS_GET_GACHA_ACCUMULATIVE_REWARD = 50;
+  ITEMWAYS_GET_GACHA_CUSTOM_FINAL_GUARANTEED = 51;
+  ITEMWAYS_GET_GACHA_ROLL_FINAL_GUARANTEED = 52;
+  ITEMWAYS_GET_POWER_CONSUME = 53;
+  ITEMWAYS_GET_POWER_NATURAL_RECOVER = 54;
+  ITEMWAYS_GET_RAID_SWEEP = 55;
+  ITEMWAYS_GET_ACTIVITY_LEVEL_REWARD = 56;
+  ITEMWAYS_GET_ACTIVITY_DOUBLE_DUNGEON = 57;
+  ITEMWAYS_GET_ACTIVITY_SIGN_IN = 58;
+  ITEMWAYS_GET_ACTIVITY_ABYSS = 59;
+  ITEMWAYS_GET_ACTIVITY_COMBINATION = 60;
+  ITEMWAYS_GET_MESSAGE_REWARD = 61;
+  ITEMWAYS_GET_GACHA_EXCHANGE_TICKET = 62;
+  ITEMWAYS_GET_CHARACTER_ELITE_RESET = 63;
+  ITEMWAYS_GET_WORLD_LEVEL_BREAK_THROUGH = 64;
+  ITEMWAYS_GET_SYSTEM_GUIDE_CHAPTER_REWARD = 65;
+  ITEMWAYS_GET_ACTIVITY_ROLE_TRIAL = 66;
+  ITEMSWAY_GET_WEEKLY_RAID = 67;
+  ITEMSWAY_GET_DIVINE_PUPIL_CLAIM_REWARD = 68;
+  ITEMWAYS_GET_ACTIVITY_DAILY_LOTTERY = 69;
+  ITEMWAYS_GET_AREA_EXPLORE_REWARD = 70;
+  ITEMWAYS_GET_SUB_AREA_EXPLORE_REWARD = 71;
+  ITEMWAYS_GET_BATTLE_PASS_REWARD = 72;
+  ITEMWAYS_GET_ITEM_RECYCLE = 73;
+  ITEMWAYS_GET_MAIN_GUIDE_MISSION_REWARD = 74;
+  ITEMWAYS_GET_MAIN_GUIDE_CHAPTER_REWARD = 75;
+  ITEMWAYS_GET_BAG_CHEST_REWARD = 76;
+  ITEMWAYS_GET_WILD_BOSS_REWARD = 77;
+  ITEMWAYS_GET_MONTHLY_PASS_BUY = 78;
+  ITEMWAYS_GET_GACHA_MILESTONE_REWARD = 79;
+  ITEMWAYS_GET_CHARACTER_CONSTELLATION_RESET = 80;
+  ITEMWAYS_GET_ACTIVITY_SKIN_TRIAL = 81;
+  ITEMWAYS_GET_BLOOD_STAIN_REWARD = 82;
+  ITEMWAYS_GET_ACTIVITY_TOTAL_RECHARGE = 83;
+  ITEMWAYS_GET_ACTIVITY_KUJI = 84;
+  ITEMWAYS_GET_ACTIVITY_MAIN_STORY = 85;
+  ITEMWAYS_GET_STATE_OBJECT_UNLOCK_REWARD = 86;
+  ITEMWAYS_GET_POWER_EXCHANGE = 87;
+  ITEMWAYS_GET_ACTIVITY_MAP_EXPLORE = 88;
+  ITEMWAYS_GET_ACTIVITY_MULTI_DEVICE = 89;
+  ITEMWAYS_GET_EXCHANGE_DIAMOND = 90;
+  ITEMWAYS_GET_SKILLGROUP_LEVELUP = 91;
+  ITEMWAYS_COST_GM = 1051;
+  ITEMWAYS_COST_SHOP_EXCHANGE = 1052;
+  ITEMWAYS_COST_MENGJING_EXCHANGE = 1053;
+  ITEMWAYS_COST_QUICK_BUY = 1054;
+  ITEMWAYS_COST_POWER_BUY = 1055;
+  ITEMWAYS_COST_PASS_LEVEL_BUY = 1056;
+  ITEMWAYS_COST_CHARACTER_LEVEL_UP = 1057;
+  ITEMWAYS_COST_CHARACTER_STAGE_UP = 1058;
+  ITEMWAYS_COST_CHARACTER_SKILL_UP = 1059;
+  ITEMWAYS_COST_WEAPON_LEVEL_UP = 1060;
+  ITEMWAYS_COST_WEAPON_STAGE_UP = 1061;
+  ITEMWAYS_COST_WEAPON_REFINE = 1062;
+  ITEMWAYS_COST_CHIP_LEVEL_UP = 1063;
+  ITEMWAYS_COST_ITEM_COMPOSE = 1064;
+  ITEMWAYS_COST_ITEM_DELETE = 1065;
+  ITEMWAYS_COST_ITEM_USE = 1066;
+  ITEMWAYS_COST_MISSION = 1067;
+  ITEMWAYS_COST_COOK = 1068;
+  ITEMWAYS_COST_CHARACTER_CONSTELLATION = 1069;
+  ITEMWAYS_COST_GACHA = 1070;
+  ITEMWAYS_COST_RAID = 1071;
+  ITEMWAYS_COST_ACTIVE_POINT_DAILY_EXCHANGE = 1072;
+  ITEMWAYS_COST_ACTIVE_POINT_EXTRA_EXCHANGE = 1073;
+  ITEMWAYS_COST_UNLOCK_CHARACTER_MISSION = 1074;
+  ITEMWAYS_COST_WORLD_BOSS_TAKE_REWARDS = 1075;
+  ITEMWAYS_COST_WORLD_TREASURE_REWARDS = 1076;
+  ITEMWAYS_COST_CHIP_DECOMPOSE = 1077;
+  ITEMWAYS_COST_POTION_LEVEL_UP = 1078;
+  ITEMWAYS_COST_EQUIP_CREATE = 1079;
+  ITEMWAYS_COST_EQUIP_ENHANCE = 1080;
+  ITEMWAYS_COST_EQUIP_DISMANTLE = 1081;
+  ITEMWAYS_COST_GEM_FUSION = 1082;
+  ITEMWAYS_COST_CONVERT_ELITE_POINT = 1083;
+  ITEMWAYS_COST_RAID_SWEEP = 1084;
+  ITEMWAYS_COST_GACHA_EXCHANGE_TICKET = 1085;
+  ITEMWAYS_COST_CHARACTER_ELITE_LEVEL_UP = 1086;
+  ITEMWAYS_COST_DIVINE_PUPIL_SUBMIT = 1087;
+  ITEMWAYS_COST_CHARACTER_GIFT = 1088;
+  ITEMWAYS_COST_BATTLE_PASS_BUY_LEVEL = 1089;
+  ITEMWAYS_COST_ITEM_RECYCLE = 1090;
+  ITEMWAYS_COST_WILD_BOSS_TAKE_REWARDS = 1091;
+  ITEMWAYS_COST_WILD_BOSS_BUY_REWARDS_COUNT = 1092;
+  ITEMSWAY_COST_ROGUE = 1093;
+  ITEMWAYS_COST_ACTIVITY_KUJI = 1094;
+  ITEMWAYS_COST_MIRROR_REPAIR = 1095;
+  ITEMWAYS_COST_POWER_EXCHANGE = 1096;
+  ITEMWAYS_COST_EXCHANGE_DIAMOND = 1097;
+  ITEMWAYS_COST_MESSAGE_BOARD = 1098;
+  ITEMWAYS_OTHER = 9999;
+}
+
+enum UniversalItemType {
+  UNIVERSAL_ITEM_NORMAL = 0;
+  UNIVERSAL_ITEM_WEAPON = 1;
+  UNIVERSAL_ITEM_CHIP = 2;
+  UNIVERSAL_ITEM_EQUIP = 3;
+  UNIVERSAL_ITEM_GEM = 4;
+  UNIVERSAL_ITEM_CHARACTER = 5;
+  UNIVERSAL_ITEM_SKIN = 6;
+  UNIVERSAL_ITEM_EFFECT_DRESS = 7;
+  UNIVERSAL_ITEM_TITLE = 8;
+  UNIVERSAL_ITEM_AVATAR = 9;
+  UNIVERSAL_ITEM_AVATARFRAME = 10;
+}
+
+enum UniversalItemTag {
+  UNIVERSAL_ITEM_TAG_DEFAULT = 0;
+  UNIVERSAL_ITEM_TAG_EXTRA = 1;
+  UNIVERSAL_ITEM_TAG_TARGET_ONE = 2;
+  UNIVERSAL_ITEM_TAG_TARGET_TWO = 3;
+  UNIVERSAL_ITEM_TAG_TARGET_THREE = 4;
+}
+
+enum EquipType {
+  EQUIP_TYPE_NULL = 0;
+  EQUIP_TYPE_FORCE = 1;
+  EQUIP_TYPE_DYNAMIC = 2;
+  EQUIP_TYPE_ENERGY = 3;
+  EQUIP_TYPE_ASSIST = 4;
+}
+
+enum SceneStatus {
+  MAIN = 0;
+  RAID = 1;
+  ABYSS = 2;
+  ROGUE = 3;
+  TRAININGGROUND = 4;
+  TEMPLE = 5;
+  LOUNGE = 6;
+}
+
+enum SceneWorldLayer {
+  SCENE_WORLD_LAYER_SURFACE = 0;
+  SCENE_WORLD_LAYER_INNER = 1;
+}
+
+enum CookWay {
+  MENU = 0;
+  CUSTOM = 1;
+  SAVEDMENU = 2;
+  RECOMMENDMENU = 3;
+}
+
+enum MapTracePointEnum {
+  MAP_TRACE_CUSTOM_POINT = 0;
+}
+
+enum MailLinkType {
+  MAIL_LINK_TYPE_NONE = 0;
+  MAIL_LINK_TYPE_INNER = 1;
+  MAIL_LINK_TYPE_OUTER = 2;
+  MAIL_LINK_TYPE_GAME_CONTENT = 3;
+}
+
+enum AbyssStageState {
+  ABYSS_STAGE_ONGOING = 0;
+  ABYSS_STAGE_TMP_LEAVE = 1;
+  ABYSS_STAGE_Complete = 2;
+  ABYSS_STAGE_FAILURE = 3;
+}
+
+enum TempleStageState {
+  TEMPLE_STAGE_INIT = 0;
+  TEMPLE_STAGE_COMPLETE = 1;
+  TEMPLE_STAGE_FAILURE = 2;
+}
+
+enum GachaPoolType {
+  POOL_TYPE_NULL = 0;
+  POOL_TYPE_RESIDENT = 1;
+  POOL_TYPE_LIMITED_GUARANTEED = 2;
+  POOL_TYPE_LIMITED_UP = 3;
+  POOL_TYPE_TEST_ROUND_TWO = 4;
+  POOL_TYPE_NEWBIE = 5;
+}
+
+enum GachaPoolState {
+  GACHA_POOL_STATE_EFFECTIVE = 0;
+  GACHA_POOL_STATE_OFF_SHELF = 1;
+  GACHA_POOL_STATE_SHIELD = 2;
+}
+
+enum GuideStateEnum {
+  GUIDE_STATE_ONGOING = 0;
+  GUIDE_STATE_COMPLETE = 1;
+}
+
+enum ClientModuleEnum {
+  CLIENT_MODULE_ENUM_UI = 0;
+  CLIENT_MODULE_ENUM_INPUT = 1;
+}
+
+enum BloodstainState {
+  BLOODSTAIN_STATE_INITIAL = 0;
+  BLOODSTAIN_STATE_INTERACTED = 1;
+}
+
+enum MissionStateEnum {
+  MISSION_STATE_WAIT_ACCEPT = 0;
+  MISSION_STATE_ONGOING = 1;
+  MISSION_STATE_FAILED = 2;
+  MISSION_STATE_SUCCESS = 3;
+  MISSION_STATE_GIVEUP = 4;
+}
+
+enum MissionFlowType {
+  MISSION_FLOW_TYPE_NORMAL = 0;
+  MISSION_FLOW_TYPE_FAIL = 1;
+  MISSION_FLOW_TYPE_EXTRA = 2;
+}
+
+enum RaidState {
+  RAID_STATE_INIT = 0;
+  RAID_STATE_TOOK_REWARD = 1;
+  RAID_STATE_FAILURE = 2;
+}
+
+enum AchievementTag {
+  AC_NOTAG = 0;
+  AC_COLLECTION = 1;
+}
+
+enum AchievementCountKey {
+  ACHIEVEMENT_COUNT_MAXIMUM_WORLD_LEVEL = 0;
+  ACHIEVEMENT_COUNT_LOGIN_DAY = 1;
+  ACHIEVEMENT_COUNT_MAXIMUM_ABYSS_STARTS = 2;
+  ACHIEVEMENT_COUNT_PERFECT_DODGE = 3;
+  ACHIEVEMENT_COUNT_TOTAL_DAMAGE = 4;
+  ACHIEVEMENT_COUNT_KILLED_MONSTER = 5;
+  ACHIEVEMENT_COUNT_KILLED_BOSS = 6;
+  ACHIEVEMENT_COUNT_MAIN_MISSION = 7;
+  ACHIEVEMENT_COUNT_SIDE_MISSION = 8;
+  ACHIEVEMENT_COUNT_DAILY_MISSION = 9;
+  ACHIEVEMENT_COUNT_ONLINE_TIME = 10;
+  ACHIEVEMENT_COUNT_GACHA = 11;
+  ACHIEVEMENT_COUNT_EQUIP_CREATE = 12;
+  ACHIEVEMENT_COUNT_CONSECUTIVE_LOGIN = 13;
+  ACHIEVEMENT_COUNT_LEVEL_UP_EQUIP = 14;
+  ACHIEVEMENT_COUNT_OPEN_TREASURE = 15;
+  ACHIEVEMENT_COUNT_COLLECT_GATHERABLE = 16;
+  ACHIEVEMENT_COUNT_COMBINE_ITEM = 17;
+  ACHIEVEMENT_COUNT_SUPPORT_SKILL_CAST = 18;
+  ACHIEVEMENT_COUNT_ROGUELIKE_RAID_PASS = 19;
+  ACHIEVEMENT_COUNT_WILD_BOSS_CHALLENGE = 20;
+  ACHIEVEMENT_COUNT_BREAK_TOUGHNESS_BAR_COUNT = 21;
+  ACHIEVEMENT_COUNT_CHAR_TUTORIAL_TASK_COMPLETE = 22;
+  ACHIEVEMENT_COUNT_DEATH_BY_TRAP_COUNT = 23;
+  ACHIEVEMENT_COUNT_DESTROY_MAP_PROP_COUNT = 24;
+  ACHIEVEMENT_COUNT_REVIVE_CHARACTERS_WITH_BEACONS = 25;
+  ACHIEVEMENT_COUNT_SCENE_USE_GRIPPER_COUNT = 26;
+  ACHIEVEMENT_COUNT_BEACON_TELEPORT_COUNT = 27;
+  ACHIEVEMENT_COUNT_KILL_MONSTER_BY_TRAP_COUNT = 28;
+  ACHIEVEMENT_COUNT_UPDRAFT_MAXIMUM_SEC = 29;
+}
+
+enum RogueGameState {
+  ROGUE_GAME_NULL = 0;
+  ROGUE_GAME_HANG = 1;
+  ROGUE_GAME_PLAY = 2;
+}
+
+enum RogueRoomType {
+  ROGUE_ROOM_TYPE_NULL = 0;
+  ROGUE_ROOM_TYPE_ALLY = 1;
+  ROGUE_ROOM_TYPE_ITEM = 2;
+  ROGUE_ROOM_TYPE_CION = 3;
+  ROGUE_ROOM_TYPE_SHOP = 4;
+  ROGUE_ROOM_TYPE_BOSS = 5;
+}
+
+enum RogueRoomStatus {
+  ROGUE_ROOM_STATUS_UNFINISHED = 0;
+  ROGUE_ROOM_STATUS_FINISHED = 1;
+}
+
+enum RogueFinishType {
+  ROGUE_FINISH_TYPE_PASS = 0;
+  ROGUE_FINISH_TYPE_DEAD = 1;
+  ROGUE_FINISH_TYPE_QUIT = 2;
+}
+
+enum ContactSessionState {
+  CONTACT_SESSION_STATE_LOCK = 0;
+  CONTACT_SESSION_STATE_ONGOING = 1;
+  CONTACT_SESSION_STATE_FINISH = 2;
+}
+
+enum ActivitType {
+  ACTICITY_BASE = 0;
+  ACTICITY_LEVEL_REWARD = 1;
+  ACTICITY_DOUBLE_DUNGEON = 2;
+}
+
+enum ActivitEggType {
+  EGG_NULL = 0;
+  EGG_REWARD = 1;
+  EGG_BOSS = 2;
+  EGG_DUNGEON = 3;
+  EGG_TREASURE = 4;
+}
+
+enum LoungeInteractPointUseType {
+  LOUNGE_INTERACT_POINT_USE_EMPTY = 0;
+  LOUNGE_INTERACT_POINT_USE_INVITE = 1;
+  LOUNGE_INTERACT_POINT_USE_GLOBAL = 2;
+  LOUNGE_INTERACT_POINT_USE_RAND = 3;
+}
+
+enum BattlePassPayLevel {
+  BATTLE_PASS_PAY_NULL = 0;
+  BATTLE_PASS_PAY_LOW = 1;
+  BATTLE_PASS_PAY_HIGH = 2;
+}
+
+message ErrorParam {
+int64 uid = 1;
+int64 banEndTimestamp = 2;
+int32 fairTag = 3;
+}
+
+message ErrorAck {
+int32 code = 1;
+string message = 2;
+string errCode = 3;
+int32 codeType = 4;
+int32 codeModule = 5;
+int32 subCode = 6;
+pb.ErrorParam param = 7;
+}
+
+message DemandDataReq {
+repeated string indexs = 1;
+string tableName = 2;
+}
+
+message DemandDataAck {
+repeated string contexts = 1;
+}
+
+message AttributeNtf {
+int32 id = 1;
+map<int32, int64> changes = 2;
+pb.ItemsWays changeWay = 3;
+}
+
+message PingReq {
+}
+
+message PingAck {
+int64 ts = 1;
+}
+
+message KickUserNtf {
+string reason = 1;
+string errCode = 2;
+pb.ErrorAck info = 3;
+}
+
+message DetailUserInfo {
+pb.BriefUserInfo brief = 1;
+map<int32, int64> attributes = 2;
+map<int32, int64> counts = 3;
+map<int32, int64> dailyCounts = 4;
+map<int32, int64> conditions = 5;
+map<int32, int64> dailyConditions = 6;
+map<int32, int64> weekCounts = 7;
+pb.PlayerProfile profile = 8;
+}
+
+message BriefUserInfo {
+int64 id = 1;
+string nickname = 2;
+int32 createTime = 3;
+int32 serverIndex = 4;
+int32 gender = 5;
+string openId = 6;
+int32 level = 7;
+int64 combat = 8;
+int32 OfflineTime = 9;
+int64 accountId = 10;
+}
+
+message UserServerInfo {
+int32 serverIndex = 1;
+string nickname = 2;
+int32 lvl = 3;
+int64 userId = 4;
+}
+
+message CountNtf {
+map<int32, int64> counts = 1;
+map<int32, int64> dailyCounts = 2;
+map<int32, int64> weekCounts = 3;
+}
+
+message ConditionNtf {
+map<int32, int64> conditions = 1;
+map<int32, int64> dailyConditions = 2;
+}
+
+message RankMember {
+pb.BriefUserInfo brief = 1;
+int64 data = 2;
+int32 rank = 3;
+}
+
+message ResetDailyNtf {
+}
+
+message ExpiredTimeLimitItemAutoUseEntry {
+int32 item_id = 1;
+int32 uid = 2;
+}
+
+message ExpiredTimeLimitItemAutoUseNtf {
+repeated pb.ExpiredTimeLimitItemAutoUseEntry items = 1;
+}
+
+message ItemDestroyedEntry {
+int32 item_id = 1;
+int32 count = 2;
+}
+
+message ItemDestroyedNtf {
+repeated pb.ItemDestroyedEntry items = 1;
+}
+
+message UniversalItem {
+pb.UniversalItemType type = 1;
+int32 uid = 2;
+int32 index = 3;
+int32 count = 4;
+bool isNew = 5;
+repeated pb.UniversalItem extraItems = 6;
+int64 expireTime = 7;
+pb.UniversalItemTag tag = 8;
+}
+
+message Item {
+int32 id = 1;
+int32 count = 2;
+bool isNew = 3;
+int64 expireTime = 4;
+int32 uid = 5;
+}
+
+message SkinInfo {
+int32 uid = 1;
+int32 skinId = 2;
+int64 obtainTime = 3;
+int64 expireTime = 4;
+}
+
+message EffectDressInfo {
+int32 uid = 1;
+int32 effectDressId = 2;
+int64 obtainTime = 3;
+int64 expireTime = 4;
+}
+
+message MonthlyPassEntry {
+int32 passId = 1;
+int64 expireTimeUnix = 2;
+int64 lastDailyRewardUnix = 3;
+int64 lastPopTimeUnix = 4;
+int32 checkedDays = 5;
+int32 totalCycleDays = 6;
+}
+
+message MonthlyPassPurchaseNtf {
+pb.MonthlyPassEntry pass = 1;
+repeated pb.UniversalItem extraItems = 2;
+}
+
+message MonthlyPassDailyRewardNtf {
+int32 passId = 1;
+repeated pb.UniversalItem items = 2;
+}
+
+message MonthlyPassRecordPopReq {
+int32 passId = 1;
+int64 lastPopTimeUnix = 2;
+}
+
+message MonthlyPassRecordPopAck {
+}
+
+message MonthlyPassSyncNtf {
+repeated pb.MonthlyPassEntry passes = 1;
+}
+
+message OperationItem {
+int32 index = 1;
+int32 count = 2;
+int32 chooseIndex = 3;
+int32 uid = 4;
+}
+
+message BloodBottleItem {
+int32 id = 1;
+int32 usedCount = 2;
+}
+
+message LittleItemsShortcutInfo {
+repeated int32 shortcutItems = 1;
+int32 curShortcutIdx = 2;
+}
+
+message LittleItems {
+pb.LittleItemsShortcutInfo shortcutInfo = 1;
+repeated pb.BloodBottleItem bloodBottleItems = 2;
+pb.PotionInfo potionInfo = 3;
+}
+
+message PotionItem {
+int32 id = 1;
+int32 level = 2;
+repeated int32 additives = 3;
+int32 useCount = 4;
+int32 maxUse = 5;
+}
+
+message PotionInfo {
+map<int32, pb.PotionItem> potionItems = 1;
+}
+
+message PBVector2 {
+float x = 1;
+float y = 2;
+}
+
+message PBVector2Int {
+int32 x = 1;
+int32 y = 2;
+}
+
+message PBVector2IntList {
+repeated pb.PBVector2Int vecs = 1;
+}
+
+message PBVector3 {
+float x = 1;
+float y = 2;
+float z = 3;
+}
+
+message Property {
+int32 id = 1;
+float value = 2;
+}
+
+message ChipSideProperties {
+repeated int32 indexes = 1;
+int32 id = 2;
+}
+
+message Skill {
+int32 id = 1;
+int32 level = 2;
+}
+
+message CharacterStatus {
+int32 hp = 1;
+float exPower = 2;
+float assistPower = 3;
+float energyPower = 4;
+float specialEnergyPower = 5;
+}
+
+message ChipPosition {
+int32 uid = 1;
+int32 idx = 2;
+}
+
+message ChipSideSlot {
+repeated pb.ChipPosition chips = 1;
+}
+
+message ChipSlot {
+int32 coreChipUid = 1;
+repeated pb.ChipSideSlot sideSlots = 2;
+}
+
+message CharacterEliteInfo {
+int32 point = 1;
+map<int32, int32> levels = 2;
+}
+
+message Character {
+int32 id = 1;
+int32 level = 2;
+int32 exp = 3;
+int32 stage = 4;
+int32 weaponUid = 6;
+map<int32, pb.Skill> skills = 7;
+map<int32, bool> stageRewards = 8;
+pb.CharacterStatus status = 9;
+map<int32, int32> skillGroupLevels = 10;
+int32 constellation = 11;
+map<int32, bool> constellationEnabledStatus = 12;
+int32 skillPoint = 13;
+pb.ChipSlot chipSlot = 14;
+map<int32, int32> equips = 15;
+pb.CharacterEliteInfo eliteInfo = 16;
+int32 likeabilityExp = 17;
+int32 likeabilityLevel = 18;
+int32 skinId = 19;
+int64 gotTime = 20;
+int32 effectDressId = 22;
+}
+
+message Weapon {
+int32 uid = 1;
+int32 weaponId = 2;
+int32 level = 3;
+int32 exp = 4;
+int32 refine = 5;
+int32 stage = 6;
+bool lock = 7;
+pb.ItemsWays source = 8;
+}
+
+message Chip {
+int32 uid = 1;
+int32 id = 2;
+int32 level = 3;
+int32 exp = 4;
+int32 mainPropertyId = 5;
+bool lock = 7;
+pb.ItemsWays source = 9;
+repeated pb.ChipSideProperties sideProperties = 10;
+bool isNew = 11;
+}
+
+message Equip {
+int32 uid = 1;
+int32 id = 2;
+bool isLock = 3;
+int32 wearCharacter = 4;
+pb.EquipType type = 5;
+int32 quality = 6;
+int32 level = 7;
+repeated pb.EquipAttr attributes = 8;
+repeated pb.EquipFeature features = 9;
+repeated pb.GemSlot gemSlots = 10;
+pb.ItemsWays source = 11;
+}
+
+message EquipAttr {
+int32 id = 1;
+float value = 2;
+}
+
+message EquipFeature {
+int32 id = 1;
+int32 level = 2;
+}
+
+message GemSlot {
+int32 slotId = 1;
+int32 slotLevel = 2;
+int32 gemId = 3;
+}
+
+message Gem {
+int32 uid = 1;
+int32 id = 2;
+bool isLock = 3;
+int32 level = 4;
+int32 inlayEquip = 5;
+repeated pb.EquipFeature features = 6;
+pb.ItemsWays source = 7;
+}
+
+message Inventory {
+repeated pb.Item items = 1;
+repeated pb.Chip chips = 2;
+repeated pb.Weapon weapons = 3;
+repeated pb.Equip equips = 4;
+repeated pb.Gem gems = 5;
+}
+
+message MissionState {
+int32 id = 1;
+bool ready = 2;
+bool finished = 3;
+int32 subMissionId = 4;
+repeated int32 subMissionProgress = 5;
+repeated pb.Item submitItems = 6;
+repeated int32 bluePrintIds = 7;
+map<int32, bool> completedSubmissions = 8;
+}
+
+message MissionSubState {
+}
+
+message EscInfo {
+int64 accountId = 1;
+string nickName = 2;
+string signature = 3;
+map<int32, bool> avatarIds = 4;
+int32 curAvatarId = 5;
+map<int32, bool> avatarFrameIds = 6;
+int32 curAvatarFrameId = 7;
+map<int32, bool> titleIds = 8;
+int32 curTitleId = 9;
+repeated int32 showCharacterIds = 10;
+int64 changeNameTime = 11;
+int64 changeSignatureTime = 12;
+}
+
+message SceneSpawnInfo {
+pb.PBVector3 pos = 1;
+int32 interactionObjUID = 2;
+int32 chunkID = 3;
+}
+
+message SceneTempArchiveInfo {
+pb.PBVector3 pos = 1;
+int32 chunkID = 2;
+}
+
+message ScenePosParam {
+int32 gameworldID = 1;
+int32 chunkID = 2;
+pb.PBVector3 pos = 3;
+}
+
+message SceneInfo {
+int32 worldID = 1;
+pb.PBVector3 lastPos = 3;
+int32 checkPosUid = 4;
+int32 playingMusic = 5;
+int64 InstId = 6;
+string transNo = 7;
+pb.SceneSpawnInfo spawnInfo = 9;
+int32 chunkID = 10;
+int32 configID = 11;
+pb.SceneTempArchiveInfo tmpArchiveInfo = 12;
+pb.SceneWorldLayer worldLayer = 13;
+reserved 2, 8;
+}
+
+message BuffWithRate {
+int32 id = 1;
+int32 valueRate = 2;
+}
+
+message FoodBuff {
+repeated pb.BuffWithRate mainBuffs = 1;
+repeated pb.BuffWithRate minorBuffs = 2;
+int64 startEffectTs = 3;
+repeated pb.Item minorItems = 4;
+pb.CookWay cookWay = 5;
+repeated pb.Item mainItems = 6;
+int32 menuID = 7;
+int32 customWayNameID = 8;
+int32 resetMinorBuffNum = 9;
+bool savedCustomMenu = 10;
+}
+
+message Buff {
+pb.FoodBuff foodBuff = 1;
+}
+
+message RedeemCode {
+repeated string usedCodes = 1;
+repeated int32 usedCodeBatchs = 2;
+}
+
+message PlayerProfile {
+int64 powerRecoverTs = 4;
+int32 powerDailyBuyNum = 5;
+pb.EscInfo escInfo = 6;
+pb.SceneStatus sceneStatus = 7;
+map<int32, pb.SceneInfo> sceneInfos = 8;
+pb.Buff buff = 9;
+int32 playingMusic = 10;
+string settingOptions = 11;
+uint64 roomId = 12;
+pb.RedeemCode redeemCode = 13;
+reserved 1, 2, 3;
+}
+
+message PresetTeam {
+repeated int32 characterIds = 1;
+string name = 2;
+int32 battleCharacterIdx = 3;
+int32 equipPotionId = 4;
+}
+
+message CharacterRepository {
+map<int32, pb.Character> characters = 1;
+pb.CharacterDependSnapshot characterDependSnapshot = 2;
+map<int32, pb.Character> extraCharacters = 3;
+pb.CharacterDependSnapshot extraCharacterDependSnapshot = 4;
+map<int32, pb.PotionItem> potions = 5;
+map<int32, pb.PotionItem> trialPotions = 6;
+}
+
+message CharacterDependSnapshot {
+map<int32, pb.Equip> equipSnapshot = 1;
+map<int32, pb.Gem> gemSnapshot = 2;
+}
+
+message Team {
+repeated int32 characterIds = 1;
+int32 battleCharacterIdx = 2;
+repeated int32 extraCharacterIds = 3;
+int32 equipPotionId = 4;
+bool equippedTrialPotion = 5;
+}
+
+message TeamList {
+repeated pb.Team teams = 1;
+int32 currentBattleTeamIdx = 2;
+}
+
+message TeamInfo {
+repeated pb.PresetTeam presetTeams = 1;
+int32 mainTeamIdx = 2;
+map<int32, pb.TeamList> teams = 3;
+map<int32, pb.CharacterRepository> characterRepository = 4;
+}
+
+message TeamCharacterUsage {
+int32 characterId = 1;
+bool isTrial = 2;
+}
+
+message TeamUsage {
+repeated pb.TeamCharacterUsage characterUsage = 1;
+int32 battleCharacterIdx = 2;
+int32 equipPotionId = 3;
+int32 isTrialPotion = 4;
+}
+
+message TempTeam {
+repeated pb.Character characters = 1;
+int32 battleCharacterIdx = 2;
+pb.PotionItem potion = 3;
+}
+
+message AbyssTeamInfo {
+repeated int32 characterIds = 1;
+pb.PotionItem potion = 2;
+int32 potionCurUseCount = 3;
+}
+
+message HandbookInfo {
+int32 id = 1;
+float maxSize = 2;
+int32 maxTs = 3;
+float minSize = 4;
+int32 minTs = 5;
+}
+
+message Player {
+pb.PlayerProfile profile = 1;
+pb.Inventory inventory = 3;
+repeated pb.MissionState missions = 4;
+repeated pb.HandbookInfo handbooks = 5;
+repeated pb.NPCInfo npcs = 6;
+repeated pb.Assist robots = 7;
+map<int32, pb.Map> maps = 8;
+repeated int32 openSystems = 9;
+repeated int32 takeRewardLevels = 10;
+map<int32, pb.Raid> raidInfos = 11;
+map<int32, pb.Shop> shopInfos = 12;
+pb.Abyss abyssInfo = 13;
+repeated pb.Mail mailInfos = 14;
+repeated int32 lockMailTemplateIDs = 15;
+pb.Achievements achievements = 16;
+pb.Cook cook = 17;
+int32 raidId = 18;
+map<int32, bool> gotItems = 19;
+map<int32, int32> interfaceGuide = 20;
+pb.DailyData dailyData = 21;
+pb.AnswerQuestions answerQuestions = 22;
+pb.Friends friends = 23;
+pb.MapViewInfo mapView = 24;
+int32 raidMultiple = 25;
+pb.AssistantSystem assistantSystem = 26;
+map<int32, bool> systemGuideChapter = 27;
+reserved 2;
+}
+
+message NPCInfo {
+int32 npcId = 1;
+int32 overrideStateId = 2;
+int32 overrideMissionId = 3;
+int32 baseStateId = 4;
+}
+
+message AssistSkin {
+int32 id = 1;
+map<int32, bool> colors = 2;
+int32 color = 3;
+}
+
+message Assist {
+int32 id = 1;
+map<int32, pb.AssistSkin> skins = 2;
+int32 skin = 3;
+}
+
+message Map {
+int32 wid = 1;
+map<int32, pb.MapCustomFlag> customFlags = 2;
+map<int32, int32> serviceSaveStateIds = 3;
+map<int32, int32> serviceBehaveIds = 4;
+map<int32, int32> serviceCleanedTs = 5;
+map<int32, pb.DropItem> dropItems = 6;
+map<int32, bool> lightedMapBlocks = 7;
+}
+
+message MapDbModel {
+pb.AreaMapCustomFlags areaFlags = 1;
+pb.MapTrancePoint mapTracePoint = 2;
+pb.AreaDivinePupils areaDivinePupils = 3;
+map<int32, pb.MapExploreClaimedReward> areaExploreClaimedReward = 4;
+map<int32, pb.MapExploreClaimedReward> subAreaExploreClaimedReward = 5;
+map<int32, bool> unlockedAreas = 6;
+}
+
+message DivinePupil {
+int32 curLv = 1;
+int32 curExp = 2;
+bool claimedReward = 3;
+}
+
+message AreaDivinePupils {
+map<int32, pb.DivinePupil> areas = 1;
+}
+
+message MapCustomFlags {
+map<int32, pb.MapCustomFlag> flags = 1;
+}
+
+message AreaMapCustomFlags {
+map<int32, pb.MapCustomFlags> areas = 1;
+}
+
+message MapCustomFlag {
+int32 id = 1;
+int32 tid = 2;
+pb.PBVector3 pos = 3;
+int32 areaID = 4;
+}
+
+message MapTrancePoint {
+int32 areaID = 1;
+int32 pointID = 2;
+pb.MapTracePointEnum pointType = 3;
+}
+
+message MapExploreGroupProgress {
+int32 groupId = 1;
+int32 progress = 2;
+int32 total = 3;
+}
+
+message MapSubAreaExplore {
+int32 id = 1;
+map<int32, pb.MapExploreGroupProgress> groupExplore = 2;
+int32 totalExplore = 3;
+map<int32, bool> claimedReward = 4;
+map<int32, pb.MapChunkExplore> chunkExplore = 5;
+}
+
+message MapChunkExplore {
+int32 id = 1;
+map<int32, pb.MapExploreGroupProgress> groupExplore = 2;
+int32 totalExplore = 3;
+}
+
+message MapAreaExplore {
+int32 id = 1;
+map<int32, pb.MapSubAreaExplore> subAreaExplore = 2;
+int32 totalExplore = 3;
+map<int32, bool> claimedReward = 4;
+}
+
+message MapExploreClaimedReward {
+map<int32, bool> claimedReward = 1;
+}
+
+message ServiceSaveState {
+int32 uid = 1;
+int32 stateId = 2;
+int32 behaveId = 3;
+int32 cleanedTs = 4;
+}
+
+message ServiceBehave {
+int32 uid = 1;
+int32 behaveId = 2;
+}
+
+message DropItem {
+int32 uid = 1;
+int32 itemId = 2;
+int32 count = 3;
+}
+
+message DropPackage {
+uint32 id = 1;
+map<int32, pb.DropItem> items = 2;
+int32 source = 3;
+int32 collectionID = 4;
+}
+
+message Mail {
+int32 id = 1;
+int32 templateID = 2;
+int32 priority = 3;
+int64 createTs = 4;
+int64 expireTs = 5;
+int32 type = 6;
+string sender = 7;
+string title = 8;
+string content = 9;
+int32 state = 10;
+repeated pb.Item rewards = 11;
+int32 tag = 12;
+string questionnaireUrl = 13;
+string questionnaireTitle = 14;
+pb.MailLinkType linkType = 15;
+int32 link = 16;
+}
+
+message Commodity {
+int32 idx = 1;
+int32 boughtNum = 2;
+int64 lastRefreshTs = 3;
+}
+
+message SubShop {
+int32 idx = 1;
+map<int32, pb.Commodity> Commodities = 2;
+}
+
+message Shop {
+int32 id = 1;
+map<int32, pb.SubShop> subShops = 2;
+}
+
+message CharacterSyncInfo {
+map<int32, pb.CharacterStatus> cs = 1;
+int32 battleCharacterId = 2;
+}
+
+message AchievementSyncInfo {
+map<int32, int32> fightTypeCntInfo = 1;
+map<int32, int32> bossKillTime = 2;
+map<int32, int32> useSkillCount = 3;
+map<int32, int32> characterDieOnOneHit = 4;
+map<int32, int32> damageAccumulateByType = 5;
+repeated int32 interactedNPCs = 6;
+map<int32, int32> damageTypeDieOnOneHit = 7;
+map<int32, int32> characterKillMonsterInAirCount = 8;
+map<int32, int32> playerDeadByMonsterPointID = 9;
+map<int32, int32> damageOnceMaximumByType = 10;
+}
+
+message CommonStart {
+}
+
+message CommonEnd {
+}
+
+message LoginMsgStart {
+}
+
+message LoginMsgEnd {
+}
+
+message GateMsgStart {
+}
+
+message GateMsgEnd {
+}
+
+message GameMsgStart {
+}
+
+message GameMsgEnd {
+}
+
+message GameBatchPacket {
+bytes packetData = 1;
+}
+
+message TookLevelRewards {
+map<int32, bool> levels = 1;
+map<int32, bool> systemGuideChapter = 2;
+}
+
+message OpenedSystems {
+map<int32, bool> systems = 1;
+map<int32, bool> readSystems = 2;
+}
+
+message Items {
+map<int32, pb.Item> values = 1;
+}
+
+message BagChestRewardSelectRecord {
+map<int32, int32> rewardSelectCounts = 1;
+}
+
+message BagChestRewardSelectData {
+map<int32, pb.BagChestRewardSelectRecord> chestRecords = 1;
+}
+
+message TimeLimitItems {
+repeated pb.Item items = 1;
+int32 maxID = 2;
+}
+
+message Attributes {
+map<int32, int32> values = 1;
+}
+
+message Characters {
+map<int32, pb.Character> values = 1;
+}
+
+message Weapons {
+map<int32, pb.Weapon> values = 1;
+}
+
+message Chips {
+map<int32, pb.Chip> values = 1;
+}
+
+message Equips {
+map<int32, pb.Equip> values = 1;
+}
+
+message Gems {
+map<int32, pb.Gem> values = 1;
+}
+
+message MonsterHandbook {
+map<int32, int32> typeKilledCount = 1;
+map<int32, bool> unlockedMonsterIds = 2;
+map<int32, bool> unlockedWildbossIds = 3;
+}
+
+message PlayerGrowthGuide {
+map<int32, bool> claimedMissionReward = 1;
+map<int32, bool> claimedChapterReward = 2;
+}
+
+message Handbook {
+map<int32, pb.HandbookInfo> infos = 1;
+pb.MonsterHandbook monsterHandbook = 2;
+pb.PlayerGrowthGuide growthGuide = 3;
+}
+
+message ArchiveItem {
+int32 id = 1;
+int32 firstTimestamp = 2;
+bool read = 3;
+}
+
+message Archive {
+map<int32, pb.ArchiveItem> items = 1;
+map<int32, pb.ArchiveItem> characters = 2;
+map<int32, pb.ArchiveItem> monsters = 3;
+}
+
+message SubMission {
+int32 id = 1;
+int32 startTs = 2;
+int32 completedTs = 3;
+repeated int32 progress = 4;
+repeated int32 bluePrints = 5;
+}
+
+message Shops {
+map<int32, pb.Shop> value = 1;
+}
+
+message AbyssBattleReport {
+map<int32, int32> characterBattleCount = 1;
+map<int32, int32> characterUsePotionMaximumCount = 2;
+map<int32, int32> characterMaximumDamage = 3;
+map<int32, int32> characterMaximumExSkillCount = 4;
+map<int32, int32> characterMaximumDodgeCount = 5;
+}
+
+message AbyssStage {
+int32 index = 1;
+bool isUnlock = 2;
+repeated pb.AbyssTeamInfo teams = 3;
+int32 completedTargetsNum = 4;
+int32 completedNum = 5;
+int32 curChallengeSubStage = 6;
+repeated int32 latestUseSeconds = 7;
+int32 entryWorldId = 8;
+int32 enterSubStageTs = 9;
+repeated int32 subStageRestartCount = 11;
+int32 stageRestartCount = 12;
+repeated string subStageTransNo = 13;
+map<int32, bool> evaluationClaimState = 14;
+map<int32, int32> subStageMinimumSecs = 15;
+pb.StageStateEnum state = 16;
+repeated pb.AbyssBattleReport subStageBattleReports = 17;
+pb.AbyssBattleReport stageBattleReport = 18;
+int32 stageMinimumSecs = 19;
+pb.StageChallengeTarget target = 20;
+pb.StageSettleInfo aggregateSettleInfo = 21;
+reserved 10;
+}
+
+message Abyss {
+repeated pb.AbyssStage stages = 1;
+map<int32, bool> takenRewards = 2;
+int32 id = 3;
+int32 curChallengeStage = 4;
+int32 lastChallengeStage = 5;
+bool recycle = 6;
+int32 jumpStartFloor = 7;
+}
+
+message Abysses {
+map<int32, pb.Abyss> value = 1;
+int32 curAbyssId = 2;
+int32 curChallengeAbyssId = 3;
+int32 oneTimeAbyssId = 4;
+int32 lastChallengeAbyssID = 5;
+}
+
+message Temple {
+int32 id = 1;
+bool completed = 2;
+repeated bool gotStars = 3;
+pb.TeamUsage lastTeam = 4;
+int32 collectTreasureNum = 5;
+pb.StageStateEnum state = 6;
+int32 entryGameWID = 7;
+repeated int32 obtainRobots = 8;
+int32 thisTimeCollectTreasureNum = 9;
+map<int32, int32> selectedBuffs = 10;
+pb.StageChallengeTarget target = 11;
+int32 stageMinimumSecs = 12;
+}
+
+message TempleStage {
+int32 templeId = 1;
+repeated int32 teamCharacterIds = 2;
+int32 entryWorldId = 3;
+pb.TempleStageState state = 4;
+repeated int32 obtainRobots = 6;
+int32 openTreasureNum = 7;
+reserved 5;
+}
+
+message TempleArea {
+int32 areaId = 1;
+map<int32, pb.Temple> temples = 2;
+map<int32, bool> takenStarRewards = 3;
+}
+
+message TempleInfo {
+map<int32, pb.TempleArea> areaInfo = 1;
+map<int32, pb.Temple> temples = 3;
+int32 curChallengeId = 4;
+reserved 2;
+}
+
+message CookItemInfo {
+repeated int32 unlockedSkillIdx = 1;
+}
+
+message Cook {
+int32 potLevel = 1;
+map<int32, bool> unlockedMenus = 2;
+repeated pb.CookMenu customMenus = 3;
+map<int32, pb.CookItemInfo> cookItemInfos = 4;
+int32 curRecommendTemplate = 5;
+}
+
+message CookMenu {
+repeated pb.Item mainItems = 1;
+repeated pb.Item minorItems = 2;
+string menuName = 3;
+}
+
+message TmplMailIDs {
+map<int32, bool> tmplMailIDs = 1;
+}
+
+message Mails {
+map<int32, bool> lockMailIDs = 1;
+map<int32, pb.TmplMailIDs> generatedMailTmpls = 2;
+}
+
+message HandbookRewardStatus {
+map<int32, bool> dailyPointReward = 1;
+map<int32, bool> dailyConditionTaskReward = 2;
+}
+
+message DailyData {
+int32 lastUpdateTS = 1;
+int32 gachaNum = 2;
+int32 loginDayCount = 3;
+int32 lastWeeklyUpdateTS = 5;
+int32 dailySentCharacterGiftCount = 8;
+pb.HandbookRewardStatus handbookRewardStatus = 9;
+int32 wildBossTakeRewardCount = 10;
+int32 wildBossRewardBoughtCount = 11;
+int32 wildBossRewardExtraCount = 12;
+map<int32, int32> collectionGetItems = 13;
+int32 wildBossRewardCycleTakeCount = 14;
+reserved 4, 6, 7;
+}
+
+message GachaHistoryItem {
+pb.Item item = 1;
+int32 drawTimestamp = 2;
+int32 poolId = 3;
+}
+
+message GachaHistoryItems {
+repeated pb.GachaHistoryItem items = 1;
+}
+
+message GachaLimitedGuaranteedPool {
+int32 totalCount = 1;
+int32 countForNotExchangeFinalGuaranteed = 2;
+int32 countForNotTarget = 3;
+int32 countForNotHighQuality = 4;
+bool exchangedFinalGuaranteed = 5;
+int32 countForNotHighQualityUp = 6;
+}
+
+message GachaLimitedUpPool {
+int32 totalCount = 1;
+int32 countForNotHighestQuality = 2;
+int32 countForNotUpTarget = 3;
+int32 countForNotHighQuality = 4;
+int32 countForNotExchangeFinalGuaranteed = 5;
+bool exchangedFinalGuaranteed = 6;
+int32 drawCountForNotUpTarget = 7;
+int32 countForNotHighQualityUp = 8;
+}
+
+message GachaResidentPool {
+int32 totalCount = 1;
+int32 countForTenConsecutiveDiscount = 2;
+int32 countForNotHighestQuality = 3;
+int32 countForNotHighQuality = 4;
+int32 countForNotExchangeFinalGuaranteed = 5;
+bool gotNewbieGuaranteed = 6;
+bool exchangedFinalGuaranteed = 7;
+int32 countForNotHighQualityUp = 8;
+repeated int32 latestDrawItemTypeList = 9;
+}
+
+message GachaNewbiePool {
+int32 totalCount = 1;
+int32 countForTenConsecutiveDiscount = 2;
+int32 countForNotHighestQuality = 3;
+int32 countForNotHighQuality = 4;
+int32 countForNotExchangeFinalGuaranteed = 5;
+bool gotNewbieGuaranteed = 6;
+bool exchangedFinalGuaranteed = 7;
+int32 countForNotHighQualityUp = 8;
+}
+
+message GachaTestRoundTwoPool {
+int32 totalCount = 1;
+int32 countForTenConsecutiveDiscount = 2;
+int32 countForNotHighestQuality = 3;
+int32 countForNotHighQuality = 4;
+int32 countForNotExchangeFinalGuaranteed = 5;
+bool gotNewbieGuaranteed = 6;
+bool exchangedFinalGuaranteed = 7;
+}
+
+message GachaPoolShareData {
+pb.GachaLimitedGuaranteedPool limitedGuaranteedPool = 1;
+pb.GachaLimitedUpPool limitedUpPool = 2;
+pb.GachaResidentPool residentPool = 3;
+pb.GachaTestRoundTwoPool testRoundTwoPool = 4;
+pb.GachaNewbiePool newbiePool = 5;
+}
+
+message GachaPoolUniqueData {
+int32 totalCount = 1;
+map<int32, bool> takenBonus = 2;
+int32 poolId = 3;
+bool hasTakenMilestoneReward = 4;
+bool tiggeredFirstGuaranteed = 5;
+int32 targetGachaItemId = 6;
+int32 targetPoint = 7;
+}
+
+message GachaPoolEffectiveInfo {
+int32 id = 1;
+int64 beginTimestamp = 2;
+int64 endTimestamp = 3;
+pb.GachaPoolState state = 4;
+}
+
+message GachaData {
+map<int32, pb.GachaData.CardPoolShareData> cardPoolDatasByType = 1;
+map<int32, pb.GachaData.CardPoolUniqueData> cardPoolDatasById = 2;
+pb.GachaPoolShareData poolShareData = 3;
+map<int32, pb.GachaPoolUniqueData> poolUniqueData = 4;
+map<int32, pb.GachaHistoryItems> poolHistory = 5;
+  message CardPoolUniqueData {
+  int32 hasDrewNotChoseFiveStarNum = 1;
+  int32 choseItemID = 2;
+  }
+  message CardPoolShareData {
+  int32 drawNum = 1;
+  int32 hasDrewNotFiveStarNum = 2;
+  int32 hasDrewNotFourStarNum = 3;
+  int32 hasDrewNotUpFiveStarNum = 4;
+  }
+}
+
+message ItemGotLogs {
+map<int32, bool> gotItems = 1;
+}
+
+message ItemMonitorDailyData {
+int64 periodStartTs = 1;
+map<int32, int32> itemCounts = 2;
+map<int32, bool> alertedItems = 3;
+}
+
+message GuideItem {
+int32 firstTriggerTs = 1;
+int32 firstReadTs = 2;
+}
+
+message GuideState {
+int32 id = 1;
+pb.GuideStateEnum state = 2;
+}
+
+message GuideLogs {
+map<int32, int32> interfaceGuide = 1;
+map<int32, pb.GuideItem> guideItems = 2;
+map<int32, pb.GuideState> allGuides = 3;
+}
+
+message DisplayOrderInfo {
+repeated pb.UniversalItem gotItems = 1;
+}
+
+message BillData {
+map<int32, int32> billBuyCount = 1;
+bool isRebate = 2;
+map<string, pb.DisplayOrderInfo> displayOrders = 3;
+}
+
+message AnswerQuestions {
+map<int32, bool> tookRewards = 1;
+}
+
+message FriendProfile {
+int64 uid = 1;
+string nickname = 2;
+int32 worldLevel = 3;
+int32 playerLevel = 4;
+string signature = 5;
+int32 avatarId = 6;
+}
+
+message Friends {
+map<int64, pb.FriendProfile> values = 1;
+}
+
+message ClientComponentState {
+map<int32, bool> states = 1;
+}
+
+message ClientModuleComponentState {
+map<int32, pb.ClientComponentState> components = 1;
+}
+
+message ReviewPromptChannelData {
+int64 lastNotifyTs = 1;
+bool isNeedDisplay = 2;
+}
+
+message ReviewPromptData {
+int64 lastNotifyTs = 1;
+bool isNeedDisplay = 2;
+map<int32, pb.ReviewPromptChannelData> channelData = 3;
+}
+
+message ReminderData {
+map<string, bool> expirationMails = 1;
+}
+
+message Bloodstain {
+pb.BloodstainState state = 7;
+string id = 1;
+int64 ownerAccountId = 2;
+int32 chunkID = 3;
+pb.PBVector3 position = 4;
+int64 createTs = 5;
+int64 expireTs = 6;
+}
+
+message BloodstainChunkInfo {
+pb.Bloodstain selfBloodstain = 1;
+repeated pb.Bloodstain otherBloodstains = 2;
+}
+
+message BloodstainInfo {
+map<int32, pb.BloodstainChunkInfo> chunkBloodstains = 5;
+pb.Bloodstain selfBloodstain = 1;
+repeated pb.Bloodstain otherBloodstains = 2;
+bool otherBloodstainDisabled = 3;
+repeated string interactedBloodstainIds = 4;
+}
+
+message PlayerComposeData {
+string configVersion = 1;
+pb.PlayerComposeData.OperationTs operationTs = 2;
+pb.Shops shops = 3;
+pb.Raid raidInfo = 4;
+pb.Achievements achievements = 5;
+pb.Cook cook = 6;
+pb.Mails mails = 7;
+pb.DailyData dailyData = 8;
+pb.GachaData gachaData = 9;
+pb.ItemGotLogs itemGotLogs = 10;
+pb.GuideLogs guideLogs = 11;
+pb.BillData billData = 12;
+pb.AnswerQuestions answerQuestions = 13;
+pb.Friends friends = 14;
+pb.LittleItems littleItems = 15;
+pb.RedPoints redPoints = 16;
+map<int32, bool> questionnaire = 17;
+pb.RogueInfo rogueInfo = 18;
+pb.AssistantSystem assistantSystem = 19;
+pb.TempleInfo templeInfo = 20;
+pb.Contact contact = 21;
+pb.ActivityInfo activityInfo = 22;
+pb.Raids raids = 23;
+pb.Abysses abysses = 24;
+pb.TreasureInfo treasureInfo = 25;
+pb.ItemDistInfo itemDistInfo = 26;
+pb.TaskInfo taskInfo = 27;
+pb.TeamInfo teamInfo = 28;
+pb.TempArchiveManagement tempArchiveManagement = 29;
+pb.ClientModuleComponentState clientModuleComponentState = 30;
+int32 patchVersion = 31;
+pb.Archive archive = 32;
+pb.ReviewPromptData reviewPrompt = 33;
+pb.ReminderData reminderData = 34;
+pb.BloodstainInfo bloodstainInfo = 35;
+pb.ItemMonitorDailyData itemMonitorDailyData = 36;
+pb.BagChestRewardSelectData bagChestRewardSelectData = 37;
+pb.MessageBoardInfo messageBoardInfo = 38;
+int32 preHandlerVersion = 39;
+  message OperationTs {
+  int32 acceptedDailyMissionTs = 1;
+  int64 adjustWorldLevelTs = 2;
+  int32 changeGenderTs = 3;
+  }
+}
+
+message TempArchiveBackupData {
+pb.PBVector3 position = 1;
+map<int32, pb.PotionItem> potionSet = 2;
+map<int32, pb.CharacterStatus> characterStatusSet = 3;
+repeated pb.SceneResource sceneResources = 4;
+int32 chunkID = 5;
+}
+
+message TempArchiveManagement {
+bool enabled = 1;
+repeated pb.TempArchiveBackupData backupData = 2;
+}
+
+message SubMissionAppliedItem {
+map<int32, int32> items = 1;
+}
+
+message TriggerCondition {
+int32 id = 1;
+int32 type = 2;
+bool done = 3;
+int32 progress = 4;
+int32 startTs = 5;
+}
+
+message TriggerAction {
+int32 id = 1;
+int32 type = 2;
+bytes beforeData = 3;
+bool done = 4;
+}
+
+message TriggerConditionActionPair {
+pb.TriggerCondition condition = 1;
+repeated pb.TriggerAction actions = 2;
+repeated pb.TriggerCondition conditions = 3;
+}
+
+message MissionFlow {
+int32 curConditionGroupIdx = 1;
+repeated pb.TriggerConditionActionPair conditionActionPairs = 2;
+repeated pb.TriggerAction finalActions = 3;
+int32 doneCount = 4;
+}
+
+message MissionR {
+int64 id = 1;
+repeated pb.MissionFlow flows = 2;
+pb.MissionStateEnum state = 3;
+int32 completedNum = 4;
+repeated pb.MissionFlow extraFlows = 5;
+pb.MissionFlow failFlow = 6;
+}
+
+message Mission {
+int32 id = 1;
+int32 state = 2;
+pb.SubMission curSubMission = 3;
+map<int32, pb.SubMissionAppliedItem> appliedItems = 4;
+map<int32, pb.SubMission> completedSubMissions = 5;
+}
+
+message Missions {
+map<int32, pb.Missions.TypeMissions> values = 1;
+int32 lastGenDailyMissionTS = 2;
+map<int64, pb.MissionR> allMission = 3;
+int64 trackingMission = 4;
+  message TypeMissions {
+  map<int32, pb.Mission> values = 1;
+  }
+}
+
+message Assists {
+map<int32, pb.Assist> values = 1;
+}
+
+message SceneResourceWildBossExtraInfo {
+int32 playerWorldLvOnDied = 1;
+int32 wildBossMonsterPointID = 2;
+int32 wildBossMonsterPointUID = 3;
+}
+
+message SceneResource {
+int32 id = 1;
+int32 state = 2;
+int32 middleState = 3;
+int32 behaviorID = 7;
+bool cleaned = 8;
+int32 cleanedTs = 9;
+bool stopRefresh = 10;
+bytes extraInfo = 11;
+int32 lastRefreshTs = 12;
+bool rewarded = 13;
+reserved 4, 5, 6;
+}
+
+message MapViewChunkInfo {
+int32 chunkID = 1;
+map<string, pb.PBVector2IntList> grids = 2;
+bool isComplete = 3;
+}
+
+message MapViewAreaInfo {
+int32 areaID = 1;
+map<int32, pb.MapViewChunkInfo> chunks = 2;
+bool isComplete = 3;
+}
+
+message MapViewFullInfo {
+map<int32, pb.MapViewAreaInfo> areas = 1;
+}
+
+message MapViewRecordPositionParam {
+repeated pb.PBVector2Int positions = 1;
+}
+
+message MapViewRecordChunkParam {
+map<int32, pb.MapViewRecordPositionParam> chunks = 1;
+}
+
+message MapViewRecordParam {
+map<int32, pb.MapViewRecordChunkParam> areas = 1;
+}
+
+message MapViewGridInfo {
+map<string, pb.PBVector2IntList> gridInfo = 1;
+bool layerIsComplete = 2;
+}
+
+message MapViewInfo {
+map<string, pb.MapViewGridInfo> layerInfo = 1;
+}
+
+message MapViewLogInfo {
+string layer = 1;
+pb.PBVector2Int position = 2;
+}
+
+message Scene {
+int32 id = 1;
+map<int32, pb.MapCustomFlag> customFlags = 2;
+map<int32, pb.SceneResource> resources = 3;
+map<int32, bool> lightedMapBlocks = 4;
+pb.MapViewInfo mapView = 5;
+pb.MapViewFullInfo mapViewFull = 6;
+map<uint32, pb.DropPackage> dropPackages = 7;
+uint32 dropPackageIDSeq = 8;
+uint32 dropItemIDSeq = 9;
+}
+
+message RaidTeamCharacter {
+pb.Character character = 1;
+bool isTrial = 2;
+}
+
+message StageSettleCharacterInfo {
+int32 characterID = 1;
+int32 characterLv = 2;
+int64 damage = 3;
+float hpPercent = 4;
+float duration = 5;
+int32 potionUseCount = 6;
+int32 exSkillUseCount = 7;
+int32 dodgeCount = 8;
+map<int32, int32> triggeredNodeCount = 9;
+map<int32, int32> breakDiffTypeMonsterShieldCount = 10;
+map<int32, int32> killDiffTypeMonsterOnShieldBrokenCount = 11;
+}
+
+message StageSettleInfo {
+repeated pb.StageSettleCharacterInfo characterInfo = 1;
+float duration = 2;
+int32 dieCount = 3;
+int32 trapCount = 4;
+int32 pointCount = 5;
+int32 assistSkillCount = 6;
+map<int32, int32> killDiffTypeMonsterByAssistSkillCount = 7;
+int32 triggeredTrapCount = 8;
+repeated int32 completedChallengeTarget = 9;
+}
+
+message StageChallengeTarget {
+map<int32, bool> targetReward = 1;
+bool isPerfect = 2;
+}
+
+message BossRaid {
+int32 raidId = 1;
+}
+
+message Raid {
+int32 id = 1;
+int32 cleanNum = 3;
+int32 rate = 4;
+int32 entryWorldId = 6;
+int32 enterTs = 7;
+int64 instId = 9;
+int32 takeRewardCount = 10;
+int32 playerDeathCount = 12;
+int32 maximumScore = 13;
+pb.BossRaid boosRaid = 14;
+bool firstRewardDone = 15;
+int32 fastestClearTime = 17;
+pb.StageStateEnum state = 18;
+pb.StageChallengeTarget target = 21;
+bool enterByGM = 22;
+reserved 2, 5, 8, 11, 16, 19, 20;
+}
+
+message TypeRaids {
+map<int32, pb.Raid> raids = 1;
+}
+
+message MainScenes {
+map<int32, pb.Scene> values = 1;
+}
+
+message RaidCycleUpdateTime {
+int32 lastDailyUpdateTS = 1;
+int32 lastWeeklyUpdateTS = 2;
+int32 lastMonthlyUpdateTS = 3;
+}
+
+message Raids {
+map<int32, pb.Raid> values = 1;
+pb.RaidCycleUpdateTime updateTS = 4;
+int32 curChallengeRaidId = 5;
+reserved 2, 3;
+}
+
+message Scenes {
+pb.MainScenes mainScenes = 1;
+reserved 2, 3;
+}
+
+message ItemQualityCount {
+map<int32, int32> qualityCount = 1;
+}
+
+message AchievementProgressData {
+map<int32, pb.AchievementProgress> achievementsProgress = 1;
+map<int32, bool> tookAchievementGroupRewards = 2;
+}
+
+message AchievementProgress {
+int32 completeTS = 1;
+bool hasTakenReward = 2;
+pb.AchievementTag tag = 3;
+}
+
+message ChapterRaidPassCount {
+map<int32, int32> difficultyPassCount = 1;
+}
+
+message SubareaMajorBeaconCount {
+map<int32, int32> weberCabinCount = 1;
+}
+
+message InteractByItemType {
+map<int32, int32> unlockCount = 2;
+reserved 1;
+}
+
+message CharacterKilledMonsterCount {
+map<int32, int32> monsterCount = 1;
+}
+
+message GachaCharacterQualityCompleteCount {
+map<int32, int32> completeCount = 1;
+}
+
+message AreaSubAreaCompleteCount {
+map<int32, int32> subAreaCount = 1;
+}
+
+message AchievementInfo {
+int32 maximumWorldLevel = 1;
+map<int32, bool> completedMissions = 2;
+map<int32, int32> gotItems = 3;
+map<int32, pb.ItemQualityCount> gotItemsWithQuality = 4;
+map<int32, int32> levelWeapons = 6;
+map<int32, int32> fightTypeCount = 7;
+map<int32, int32> conversationKeyPoints = 8;
+map<int32, int32> countDatas = 9;
+map<int32, bool> completedAbyssStages = 10;
+map<int32, int32> completedRaidTypeCount = 11;
+map<int32, int32> conversationOptionInfo = 12;
+map<int32, int32> gotWeapons = 13;
+map<int32, int32> openedTreasureChest = 14;
+map<int32, int32> bossKillTime = 15;
+map<int32, int32> activityLoginDay = 16;
+map<int32, int32> useItems = 17;
+map<int32, int32> tiggerInteraction = 18;
+map<int32, int32> passRaidByIdCount = 19;
+map<int32, int32> passRaidByMarkCount = 20;
+map<int32, int32> passRaidByEntranceCount = 21;
+map<int32, int32> characterLevelUpSkillCount = 22;
+map<int32, int32> characterEliteMaximumHistoryLevel = 23;
+map<int32, int32> levelUpCharacters = 24;
+map<int32, pb.ChapterRaidPassCount> chapterRaidPassCount = 25;
+map<int32, int32> completedAbyssStagesByStars = 26;
+map<int32, int32> shopBuyCount = 27;
+map<int32, int32> useSkillCount = 28;
+map<int32, int32> killMonsterIDCount = 29;
+map<int32, bool> openSubareaMajorBeacon = 30;
+map<int32, pb.SubareaMajorBeaconCount> openWeberCabin = 31;
+map<int32, bool> areaVisited = 32;
+map<int32, pb.InteractByItemType> interactByAreaAndType = 33;
+map<int32, pb.CharacterKilledMonsterCount> characterKilledMonsterCount = 34;
+map<int32, int32> damageOnceMaximumByType = 35;
+map<int32, int32> damageTotalByType = 36;
+map<int32, pb.GachaCharacterQualityCompleteCount> gachaTenPullCharacterQualityCount = 37;
+map<int32, int32> gachaSinglePullCharacterQualityCount = 38;
+map<int32, bool> npcInteracted = 39;
+map<int32, int32> interactByItemID = 40;
+map<int32, int32> roguelikeDifficultyPassCount = 41;
+map<int32, int32> openStoneTablet = 42;
+map<int32, pb.AreaSubAreaCompleteCount> completeTreasureDecryptCount = 43;
+map<int32, pb.AreaSubAreaCompleteCount> completeLimitTimeTreasureCount = 44;
+map<int32, int32> characterKillMonsterInAirCount = 45;
+map<int32, int32> killMonsterPointCount = 46;
+map<int32, int32> unlockXinxiangSkillCount = 47;
+map<int32, int32> playerDeadByMonsterPointID = 48;
+map<int32, int32> giftToCharacterCount = 49;
+}
+
+message Achievements {
+pb.AchievementProgressData progressData = 1;
+pb.AchievementInfo info = 2;
+}
+
+message RaidRateRedPoint {
+map<int32, bool> rateInfo = 1;
+}
+
+message AreaExploreRedPoint {
+int32 id = 1;
+int32 typ = 2;
+bool show = 3;
+}
+
+message RedPoints {
+map<int32, bool> missions = 1;
+map<int32, bool> items = 2;
+map<int32, bool> customerComplaint = 3;
+map<int32, bool> activitys = 4;
+map<int32, bool> equips = 5;
+map<int32, bool> gems = 6;
+map<int32, bool> characters = 7;
+map<int32, bool> activityChallenges = 8;
+map<int32, bool> systems = 9;
+map<int32, pb.RaidRateRedPoint> raidRate = 10;
+map<int32, bool> battlePass = 11;
+map<int32, pb.AreaExploreRedPoint> AreaExploreRedPoint = 12;
+map<int32, bool> avatars = 13;
+map<int32, bool> avatarFrames = 14;
+map<int32, bool> titles = 15;
+}
+
+message NormalUserProfile {
+int64 uid = 1;
+string nickname = 2;
+int32 gender = 3;
+int32 playerLevel = 4;
+int32 playerWorldLevel = 5;
+string signature = 6;
+int32 avatarId = 7;
+}
+
+message RankInfo {
+double score = 1;
+int32 rank = 2;
+int64 uid = 3;
+}
+
+message Rank {
+repeated pb.RankInfo rankInfo = 1;
+int32 totalNum = 2;
+}
+
+message RogueTalentTreeCode {
+int32 coreId = 1;
+}
+
+message RogueTalentTreeNode {
+int32 nodeId = 1;
+int32 level = 2;
+}
+
+message RogueTalentTree {
+map<int32, pb.RogueTalentTreeCode> codes = 1;
+map<int32, pb.RogueTalentTreeNode> nodes = 2;
+int32 usedPoint = 3;
+}
+
+message RogueItem {
+int32 itemId = 1;
+int32 position = 2;
+}
+
+message RogueRoomInfo {
+int32 gameWorldId = 1;
+pb.RogueRoomType roomType = 2;
+repeated pb.RogueRoomType nextRoomTypes = 3;
+repeated int32 rewards = 4;
+pb.RogueRoomStatus roomStatus = 5;
+}
+
+message RogueRoomRecord {
+pb.RogueRoomType roomType = 1;
+int32 gameWorldId = 2;
+}
+
+message RogueTempInfo {
+bool reward = 1;
+int32 gainCoin = 2;
+int32 costCoin = 3;
+map<int32, pb.RogueItem> item = 4;
+pb.TeamList teamList = 5;
+pb.CharacterRepository battleCharacter = 6;
+map<int32, pb.RogueItem> groundItem = 7;
+repeated int32 choiceRewardId = 8;
+int32 autoChoiceId = 9;
+repeated int32 roomMonsterList = 10;
+repeated pb.RogueElementChangeInfo elementChangeInfo = 11;
+}
+
+message RogueElementChangeInfo {
+int32 elementId = 1;
+int32 elementType = 2;
+int32 eventType = 3;
+int32 value = 4;
+}
+
+message RogueGameInfo {
+int64 seed = 1;
+int32 modeId = 2;
+int32 index = 3;
+int32 coreId = 4;
+pb.RogueRoomInfo roomInfo = 6;
+int32 coin = 7;
+map<int32, pb.RogueItem> item = 8;
+map<int32, int32> leftUse = 9;
+pb.CharacterRepository battleCharacter = 10;
+int32 gainCoin = 11;
+int32 costCoin = 12;
+map<int32, pb.RogueRoomRecord> roomRecord = 13;
+map<int32, int32> battleInfo = 14;
+map<int32, int32> effectInfo = 15;
+pb.RogueTempInfo tempInfo = 16;
+int32 characterProbationId = 17;
+}
+
+message RogueInfo {
+int32 seasonId = 1;
+pb.StageStateEnum gameState = 2;
+repeated int32 clearedMode = 3;
+int32 talentTreePoint = 4;
+pb.RogueTalentTree talentTree = 5;
+pb.RogueGameInfo gameInfo = 6;
+int32 weeklyCoinGain = 7;
+int64 lastUpdateTime = 8;
+}
+
+message OperationalActivityInfo {
+int32 timeTpye = 1;
+int32 beginTime = 2;
+int32 timeLong = 3;
+}
+
+message TipNotice {
+int32 id = 1;
+string content = 2;
+int64 beginTime = 3;
+int64 endTime = 4;
+int32 showNum = 5;
+}
+
+message AssistantNpc {
+int32 id = 1;
+int32 effectiveWorldId = 2;
+}
+
+message AssistantSystem {
+repeated pb.AssistantNpc npcs = 1;
+}
+
+message ContactPlayerMessage {
+int64 uid = 1;
+string content = 2;
+int32 emojiId = 3;
+}
+
+message ContactCharacterSession {
+int32 id = 1;
+pb.ContactSessionState state = 2;
+int32 generateTimeStamp = 3;
+repeated int32 messages = 4;
+int32 updateTimeStamp = 5;
+repeated int64 messagesInt64 = 6;
+}
+
+message Contact {
+map<int32, pb.ContactCharacterSession> characterSessions = 1;
+int64 lastRandomDailyMessageTs = 2;
+}
+
+message OperationalActivityData {
+int32 activityId = 1;
+int32 activityType = 2;
+int32 priority = 3;
+int64 startTime = 4;
+int64 endTime = 5;
+map<int32, pb.ActivityGroupData> groups = 6;
+bool isHide = 7;
+}
+
+message ActivityGroupData {
+int32 groupId = 1;
+int64 startTime = 2;
+int64 endTime = 3;
+}
+
+message ActivityBaseInfo {
+int64 startTime = 1;
+int64 periodStartTime = 2;
+int64 endTime = 3;
+bool endHandled = 4;
+}
+
+message ActivityInfo {
+map<int32, pb.ActivitLevelRewardInfo> ActivitLevelRewardInfos = 1;
+map<int32, pb.ActivitDoubleDungeonInfo> ActivitDoubleDungeonInfos = 2;
+map<int32, pb.ActivitSignInInfo> ActivitSignInInfos = 3;
+map<int32, pb.ActivitAbyssInfo> ActivitAbyssInfos = 4;
+map<int32, pb.ActivitCombinationInfo> ActivitCombinationInfos = 5;
+map<int32, pb.ActivitTempleChallengeInfo> ActivitTempleChallengeInfos = 6;
+map<int32, pb.ActivitRoleTrialInfo> ActivitRoleTrialInfos = 7;
+map<int32, pb.ActivityDailyLotteryInfo> ActivityDailyLotteryInfos = 8;
+map<int32, pb.ActivitSkinTrialInfo> ActivitSkinTrialInfos = 9;
+map<int32, pb.ActivityTotalRechargeInfo> ActivityTotalRechargeInfos = 10;
+map<int32, pb.ActivityKujiInfo> ActivityKujiInfos = 11;
+map<int32, pb.ActivityMainStoryInfo> ActivityMainStoryInfos = 12;
+map<int32, pb.ActivityMapExploreInfo> ActivityMapExploreInfos = 13;
+map<int32, pb.ActivityMultiDeviceInfo> ActivityMultiDeviceInfos = 14;
+map<int32, pb.ActivityCompanionInfo> ActivityCompanionInfos = 15;
+map<int32, bool> FinishedActivityIds = 100;
+}
+
+message ActivitLevelRewardInfo {
+int32 activityId = 1;
+repeated pb.ActivityGroup gainedActivityGroup = 2;
+pb.ActivityBaseInfo activityBaseInfo = 3;
+}
+
+message ActivitDoubleDungeonInfo {
+int32 activityId = 1;
+pb.ActivityBaseInfo activityBaseInfo = 2;
+map<int32, pb.ActivityDungeonInfo> dungeonInfo = 3;
+}
+
+message ActivitSignInInfo {
+int32 activityId = 1;
+map<int32, pb.SignInGroup> signInGroups = 2;
+pb.ActivityBaseInfo activityBaseInfo = 3;
+}
+
+message ActivityGroup {
+int32 activityGroupId = 1;
+repeated int32 activityChallengeIds = 2;
+}
+
+message ActivityDungeonInfo {
+int32 challengeGroup = 1;
+int32 finishCount = 2;
+}
+
+message ActivityEggInfo {
+pb.ActivitEggType type = 1;
+repeated int32 params = 2;
+bool isFinish = 3;
+}
+
+message SignInGroup {
+int32 groupId = 1;
+map<int32, pb.SignInChallenge> challengeInfos = 2;
+}
+
+message SignInChallenge {
+int32 challengeId = 1;
+bool isGained = 2;
+repeated int32 rewards = 3;
+}
+
+message ActivitAbyssInfo {
+int32 activityId = 1;
+repeated pb.ActivityGroup gainedActivityGroup = 2;
+pb.ActivityBaseInfo activityBaseInfo = 3;
+}
+
+message ActivitCombinationInfo {
+int32 activityId = 1;
+repeated pb.ActivityGroup gainedActivityGroup = 2;
+pb.ActivityBaseInfo activityBaseInfo = 3;
+}
+
+message ActivitTempleChallengeInfo {
+int32 activityId = 1;
+pb.ActivityBaseInfo activityBaseInfo = 2;
+}
+
+message ActivitRoleTrialInfo {
+int32 activityId = 1;
+repeated pb.ActivityGroup gainedActivityGroup = 2;
+pb.ActivityBaseInfo activityBaseInfo = 3;
+}
+
+message ActivitSkinTrialInfo {
+int32 activityId = 1;
+repeated pb.ActivityGroup gainedActivityGroup = 2;
+pb.ActivityBaseInfo activityBaseInfo = 3;
+}
+
+message ActivityLotteryInfo {
+int32 lotteryPoolId = 1;
+int32 totalGachaConut = 2;
+int32 todayGachaConut = 4;
+int32 leftGachaConut = 5;
+int32 gachaConut = 6;
+int32 pityConut = 7;
+map<int32, int32> prizeInfo = 8;
+}
+
+message ActivityDailyLotteryInfo {
+int32 activityId = 1;
+map<int32, pb.ActivityLotteryInfo> lotteryInfos = 2;
+map<int32, int32> taskFinishInfo = 3;
+pb.ActivityBaseInfo activityBaseInfo = 4;
+}
+
+message ActivityTotalRechargeInfo {
+int32 activityId = 1;
+pb.ActivityBaseInfo activityBaseInfo = 2;
+int64 totalRecharge = 3;
+repeated pb.ActivityGroup gainedActivityGroup = 4;
+}
+
+message ActivityKujiInfo {
+int32 activityId = 1;
+pb.ActivityBaseInfo activityBaseInfo = 2;
+repeated pb.ActivityGroup gainedActivityGroup = 3;
+map<int32, int32> prizeInfo = 4;
+}
+
+message ActivityMainStoryInfo {
+int32 activityId = 1;
+repeated pb.ActivityGroup gainedActivityGroup = 2;
+pb.ActivityBaseInfo activityBaseInfo = 3;
+}
+
+message ActivityMapExploreInfo {
+int32 activityId = 1;
+repeated pb.ActivityGroup gainedActivityGroup = 2;
+pb.ActivityBaseInfo activityBaseInfo = 3;
+}
+
+message ActivityMultiDeviceInfo {
+int32 activityId = 1;
+repeated pb.ActivityGroup gainedActivityGroup = 2;
+pb.ActivityBaseInfo activityBaseInfo = 3;
+}
+
+message ActivityCompanionInfo {
+int32 activityId = 1;
+pb.ActivityBaseInfo activityBaseInfo = 2;
+}
+
+message TDClientData {
+string os = 1;
+string osVersion = 2;
+string bundleId = 3;
+string deviceId = 4;
+string deviceModel = 5;
+int32 screenHeight = 6;
+int32 screenWidth = 7;
+string systemLan = 8;
+string cpu = 9;
+string gpu = 10;
+string channelId = 11;
+string cps = 12;
+string platform = 13;
+string clientVersion = 14;
+}
+
+message ViolationRecord {
+int32 id = 1;
+int32 num = 2;
+}
+
+message DeviceLoginObservation {
+string deviceId = 1;
+string lastIp = 2;
+string lastPlatform = 3;
+int64 lastObservedAt = 4;
+}
+
+message OperationalInfo {
+string platform = 1;
+string device = 2;
+string operatingSystem = 3;
+string clientVersion = 4;
+string deviceId = 5;
+repeated pb.ViolationRecord violationRecords = 6;
+repeated int64 countedBlackAccountIds = 7;
+repeated pb.DeviceLoginObservation deviceLoginObservations = 8;
+}
+
+message MaintainInfo {
+string title = 1;
+string content = 2;
+}
+
+message QuestionnaireInfo {
+int32 id = 1;
+string title = 2;
+string url = 3;
+}
+
+message TreasureInfo {
+map<int32, pb.Treasure> treasures = 1;
+}
+
+message Treasure {
+int32 treasureId = 1;
+int32 gainTime = 2;
+}
+
+message ItemDistInfo {
+map<int32, bool> distIds = 1;
+}
+
+message TaskInfo {
+map<int32, pb.Task> tasks = 1;
+map<int32, pb.TaskGroup> taskGroups = 2;
+}
+
+message Task {
+int32 id = 1;
+int32 progress = 2;
+int32 status = 3;
+}
+
+message TaskGroup {
+int32 id = 1;
+int32 status = 2;
+}
+
+message PayGoods {
+int32 goodsId = 1;
+int64 beginTime = 2;
+int64 endTime = 3;
+}
+
+message LoungeInteractPoint {
+int32 id = 1;
+repeated int32 character = 2;
+int32 waitStory = 3;
+int32 performID = 4;
+int32 idleID = 5;
+pb.LoungeInteractPointUseType useType = 6;
+}
+
+message LoungeCharacterGreetInfo {
+int32 todayConditionGreetCount = 1;
+int32 todayNotConditionGreetCount = 2;
+int32 lastNotTriggerGreetID = 3;
+map<int32, bool> triggeredGreet = 4;
+}
+
+message Lounge {
+int32 currentGlobalStoryID = 1;
+map<int32, pb.LoungeInteractPoint> loungeInteractPoints = 2;
+map<int32, bool> triggeredStories = 3;
+int32 todayInvitationCount = 4;
+map<int32, pb.LoungeCharacterGreetInfo> greetInfo = 6;
+reserved 5;
+}
+
+message LoungeNormalIdleRecord {
+int32 lastRandTs = 1;
+int32 streakCount = 2;
+}
+
+message LoungeDbModel {
+int32 lastRefreshTs = 1;
+pb.Lounge lobbyInfo = 2;
+map<int32, pb.LoungeNormalIdleRecord> normalIdleRecord = 3;
+int32 lastResetTs = 4;
+}
+
+message SystemStatus {
+int32 mainID = 1;
+int32 subID = 2;
+bool disabled = 3;
+}
+
+message ClaimedTask {
+repeated int32 subTaskIds = 1;
+}
+
+message BattlePassDbModel {
+int32 id = 1;
+int32 level = 2;
+int32 exp = 3;
+int32 weeklyExp = 4;
+bool premium = 5;
+map<int32, pb.ClaimedTask> claimedTasks = 6;
+map<int32, bool> claimedFreeRewards = 7;
+map<int32, bool> claimedPremiumRewards = 8;
+pb.BattlePassPayLevel payLevel = 9;
+}
+
+message TextLibraryContent {
+int32 id = 1;
+bool isRead = 2;
+int64 unlockTime = 3;
+}
+
+message VocabularyDbModel {
+map<int32, bool> GroupState = 1;
+map<int32, bool> ContentState = 2;
+map<int32, pb.TextLibraryContent> ContentInfo = 3;
+}
+
+message DiamondInfo {
+int32 goodsId = 1;
+int64 firstBuyTime = 2;
+map<int32, int64> limitDouble = 3;
+}
+
+message DiamondData {
+map<int32, pb.DiamondInfo> diamondInfo = 1;
+}
+
+message BundleInfo {
+int32 goodsId = 1;
+int32 buyCount = 2;
+int64 lastRefreshTs = 3;
+map<int64, int32> shipDays = 4;
+int32 specialRefreshId = 5;
+}
+
+message BundleData {
+map<int32, pb.BundleInfo> bundleInfo = 1;
+}
+
+message SceneMessageInfo {
+int64 messageId = 1;
+int64 accountId = 2;
+int32 syntaxId = 3;
+repeated int32 contentIds = 4;
+int32 styleId = 5;
+int32 chunkId = 6;
+pb.PBVector3 position = 7;
+int64 expireTs = 8;
+map<int32, int32> likeInfo = 9;
+}
+
+message MessageBoardInfo {
+map<int64, pb.SceneMessageInfo> ownedMessages = 1;
+map<int32, bool> syntaxIds = 2;
+map<int32, bool> contentIds = 3;
+map<int64, int32> likedMessageIds = 4;
+bool isRefresh = 5;
+}

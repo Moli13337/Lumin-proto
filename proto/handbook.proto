@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message HandbookInfoNtf {
+repeated pb.HandbookInfo handbooks = 1;
+}
+
+message HandbookNtf {
+pb.Handbook handbook = 1;
+}
+
+message HandbookUpdateReq {
+repeated int32 unlockMonsters = 1;
+repeated int32 killedMonsters = 2;
+repeated int32 unlockWildBoss = 3;
+}
+
+message HandbookUpdateAck {
+map<int32, int32> monsterKilledCount = 1;
+}
+
+message HandbookDailyMissionClaimRewardReq {
+int32 rowId = 1;
+}
+
+message HandbookDailyMissionClaimRewardAck {
+repeated pb.UniversalItem items = 1;
+pb.HandbookRewardStatus rewardStatus = 2;
+}
+
+message HandbookDailyActivePtClaimRewardReq {
+int32 ptRewardId = 1;
+}
+
+message HandbookDailyActivePtClaimRewardAck {
+repeated pb.UniversalItem items = 1;
+pb.HandbookRewardStatus rewardStatus = 2;
+}
+
+message HandbookGrowthGuideMissionClaimRewardReq {
+int32 id = 1;
+int32 chapterID = 2;
+}
+
+message HandbookGrowthGuideMissionClaimRewardAck {
+repeated pb.UniversalItem items = 1;
+pb.PlayerGrowthGuide growthGuide = 2;
+}
+
+message HandbookGrowthGuideChapterClaimRewardReq {
+int32 id = 1;
+}
+
+message HandbookGrowthGuideChapterClaimRewardAck {
+repeated pb.UniversalItem items = 1;
+pb.PlayerGrowthGuide growthGuide = 2;
+}

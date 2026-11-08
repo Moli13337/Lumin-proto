@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message WeaponNtf {
+repeated pb.Weapon changes = 1;
+repeated int32 removeUids = 2;
+pb.ItemsWays changeWay = 3;
+}
+
+message WeaponWearReq {
+int32 uid = 1;
+int32 characterId = 2;
+}
+
+message WeaponWearAck {
+}
+
+message WeaponLockReq {
+int32 uid = 1;
+bool lock = 2;
+}
+
+message WeaponLockAck {
+}
+
+message WeaponLevelUpReq {
+int32 uid = 1;
+repeated int32 spendWeaponUids = 2;
+repeated pb.Item spendItems = 3;
+}
+
+message WeaponLevelUpAck {
+repeated pb.Item changes = 1;
+}
+
+message WeaponStageReq {
+int32 uid = 1;
+}
+
+message WeaponStageAck {
+repeated pb.Item changes = 1;
+}
+
+message WeaponRefineReq {
+int32 uid = 1;
+int32 spendUid = 2;
+}
+
+message WeaponRefineAck {
+repeated pb.Item changes = 1;
+}

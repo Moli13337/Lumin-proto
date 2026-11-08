@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+
+package pb;
+
+message Room {
+uint64 id = 1;
+int64 ownerPID = 2;
+repeated int64 pids = 3;
+int64 createStamp = 4;
+}
+
+message RoomInfoReq {
+}
+
+message RoomInfoAck {
+pb.Room room = 1;
+}
+
+message RoomCreateReq {
+}
+
+message RoomCreateAck {
+uint64 roomId = 1;
+}
+
+message RoomJoinReq {
+uint64 roomId = 1;
+}
+
+message RoomJoinAck {
+uint64 roomId = 1;
+}
+
+message RoomLeaveReq {
+uint64 roomId = 1;
+}
+
+message RoomLeaveAck {
+}
+
+message RoomJoinNtf {
+uint64 roomId = 1;
+}
+
+message RoomJoinConfirmReq {
+int64 joinerPID = 1;
+bool ok = 2;
+}
+
+message RoomJoinConfirmAck {
+}
+
+message RoomJoinConfirmNtf {
+bool ok = 1;
+}
+
+message RoomKickoutReq {
+int64 pid = 1;
+}
+
+message RoomKickoutAck {
+}
+
+message RoomSetPermissionReq {
+int32 permission = 1;
+}
+
+message RoomSetPermissionAck {
+}
+
+message RoomNtf {
+pb.Room room = 1;
+}
+
+message RoomSyncReq {
+bytes bytes = 1;
+}
+
+message RoomSyncAck {
+}
+
+message RoomForwardingMessageNtf {
+int64 pid = 1;
+bytes data = 2;
+}

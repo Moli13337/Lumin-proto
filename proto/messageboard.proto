@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message MessageBoardNtf {
+pb.MessageBoardInfo messageBoardInfo = 1;
+}
+
+message MessageBoardAddSyntaxNtf {
+repeated int32 syntaxIds = 1;
+}
+
+message MessageBoardAddContentNtf {
+repeated int32 contentIds = 1;
+}
+
+message SceneMessageNtf {
+repeated pb.SceneMessageInfo sceneMessages = 1;
+}
+
+message SceneMessageCreateReq {
+int32 syntaxId = 1;
+repeated int32 contentIds = 2;
+int32 styleId = 3;
+pb.PBVector3 position = 4;
+}
+
+message SceneMessageCreateAck {
+pb.SceneMessageInfo newMessage = 1;
+}
+
+message SceneMessageDeleteReq {
+int64 messageId = 1;
+}
+
+message SceneMessageDeleteAck {
+}
+
+message SceneMessageLikeReq {
+int64 messageId = 1;
+int32 emojiId = 2;
+}
+
+message SceneMessageLikeAck {
+}
+
+message MessageBoardRefreshReq {
+}
+
+message MessageBoardRefreshAck {
+map<int64, pb.SceneMessageInfo> ownedMessages = 1;
+}
+
+message SceneMessageSetReq {
+bool isRefresh = 1;
+}

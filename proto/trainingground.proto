@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message TrainingGroundEnterReq {
+pb.ScenePosParam sceneParam = 1;
+}
+
+message TrainingGroundEnterAck {
+pb.CharacterRepository characterRepository = 1;
+}
+
+message TrainingGroundLeaveReq {
+}
+
+message TrainingGroundLeaveAck {
+}

@@ -1,0 +1,722 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+enum ProgressType {
+  ITEM = 0;
+}
+
+enum RecordConversationOP {
+  RecordConversationAdd = 0;
+  RecordConversationReset = 1;
+}
+
+enum FriendOperation {
+  ADD_FRIEND = 0;
+  DELETE_FRIEND = 1;
+}
+
+enum TempArchiveOperation {
+  Start = 0;
+  Update = 1;
+  DropCurrentStage = 2;
+  DropAllStage = 3;
+  Finish = 4;
+}
+
+message ChangeWorldLevelReq {
+int32 toLevel = 1;
+}
+
+message ChangeWorldLevelAck {
+bool ok = 1;
+int64 changeTS = 2;
+repeated pb.UniversalItem gotItems = 3;
+}
+
+message ChangeSkinReq {
+int32 characterId = 1;
+int32 skinId = 2;
+}
+
+message ChangeSkinAck {
+int32 characterId = 1;
+int32 skinId = 2;
+}
+
+message SkinAddNtf {
+repeated pb.SkinInfo skins = 1;
+}
+
+message SkinSyncNtf {
+repeated pb.SkinInfo skins = 1;
+}
+
+message ChangeEffectDressReq {
+int32 characterId = 1;
+int32 effectDressId = 2;
+bool wear = 3;
+}
+
+message ChangeEffectDressAck {
+int32 characterId = 1;
+int32 effectDressId = 2;
+}
+
+message EffectDressAddNtf {
+repeated pb.EffectDressInfo effectDresses = 1;
+}
+
+message EffectDressSyncNtf {
+repeated pb.EffectDressInfo effectDresses = 1;
+}
+
+message OperationTimeStampsNtf {
+int64 changeWorldLevelTS = 1;
+int32 changeGenderTS = 2;
+}
+
+message Progress {
+pb.ProgressType type = 1;
+int32 id = 2;
+int32 rawData = 3;
+int32 newData = 4;
+}
+
+message ProgressNtf {
+repeated pb.Progress progresses = 1;
+}
+
+message GachaQueryHistoryReq {
+pb.GachaPoolType poolType = 1;
+int32 page = 2;
+}
+
+message GachaQueryHistoryAck {
+int32 code = 1;
+repeated pb.GachaHistoryItem pageItems = 2;
+int32 totalPage = 3;
+}
+
+message GachaCardDrawReq {
+int32 pooId = 1;
+int32 count = 2;
+}
+
+message GachaCardDrawItem {
+pb.Item poolItem = 1;
+repeated pb.Item extraItem = 2;
+bool characterMaxConstellation = 3;
+bool tiggeredFirstGuaranteed = 4;
+bool triggeredTargetGuaranteed = 5;
+}
+
+message GachaCardDrawAck {
+int32 code = 1;
+repeated pb.GachaCardDrawItem gotItems = 2;
+}
+
+message GachaPoolDataNtf {
+pb.GachaPoolShareData poolShareData = 1;
+map<int32, pb.GachaPoolUniqueData> poolUniqueData = 2;
+repeated int32 openPoolIds = 3;
+}
+
+message GachaPoolEffectiveInfoNtf {
+repeated pb.GachaPoolEffectiveInfo info = 1;
+}
+
+message GachaPoolShareDataChangeNtf {
+pb.GachaPoolShareData changeData = 1;
+pb.GachaPoolUniqueData poolUnique = 2;
+}
+
+message GachaTargetSelectReq {
+int32 gachaId = 1;
+int32 targetGachaItemId = 2;
+}
+
+message GachaTargetSelectAck {
+pb.GachaPoolUniqueData poolUnique = 1;
+}
+
+message GachaTargetCancelReq {
+int32 gachaId = 1;
+}
+
+message GachaTargetCancelAck {
+pb.GachaPoolUniqueData poolUnique = 1;
+}
+
+message GachaExchangeFinalGuaranteedReq {
+int32 poolId = 1;
+int32 gachaItemId = 2;
+}
+
+message GachaExchangeFinalGuaranteedAck {
+pb.Item gotItem = 1;
+}
+
+message GachaExchangeAccumulativeRewardReq {
+repeated int32 bonusId = 1;
+}
+
+message GachaExchangeAccumulativeRewardAck {
+repeated pb.Item items = 1;
+}
+
+message GachaExchangeMilestoneRewardReq {
+int32 poolId = 1;
+}
+
+message GachaExchangeMilestoneRewardAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message GachaExchangeTicketReq {
+int32 poolId = 1;
+int32 num = 2;
+}
+
+message GachaExchangeTicketAck {
+int32 code = 1;
+pb.Item ticket = 2;
+}
+
+message DrawCardReq {
+int32 poolId = 1;
+int32 count = 2;
+}
+
+message DrawCardAck {
+repeated pb.Item items = 1;
+repeated pb.DrawCardAck.DrawCardItem gotItems = 2;
+  message DrawCardItem {
+  pb.Item poolItem = 1;
+  pb.Item extraItem = 2;
+  }
+}
+
+message DrawCardChooseItemReq {
+int32 poolId = 1;
+int32 itemId = 2;
+}
+
+message DrawCardChooseItemAck {
+}
+
+message PowerBuyReq {
+}
+
+message PowerBuyAck {
+int32 canBuyNum = 1;
+}
+
+message AchievementTakeRewardReq {
+int32 id = 1;
+}
+
+message AchievementTakeRewardAck {
+repeated pb.Item items = 1;
+}
+
+message AchievementTakeGroupRewardReq {
+int32 gid = 1;
+}
+
+message AchievementTakeGroupRewardAck {
+repeated pb.Item items = 1;
+}
+
+message AchievementRecordFightTypeCntReq {
+int32 typ = 1;
+int32 cnt = 2;
+}
+
+message AchievementRecordFightTypeCntAck {
+}
+
+message AchievementSyncInfoReq {
+pb.AchievementSyncInfo achievementInfo = 1;
+}
+
+message AchievementSyncInfoAck {
+}
+
+message AchievementCompleteReq {
+int32 id = 1;
+}
+
+message AchievementCompleteAck {
+int32 completeTS = 1;
+}
+
+message AchievementChangeTagReq {
+int32 id = 1;
+pb.AchievementTag tag = 2;
+}
+
+message AchievementChangeTagAck {
+}
+
+message AchievementRecordConversationReq {
+repeated int32 keys = 1;
+pb.RecordConversationOP op = 2;
+}
+
+message AchievementRecordConversationAck {
+}
+
+message AchievementRecordConversationOptionReq {
+map<int32, int32> data = 1;
+}
+
+message AchievementRecordConversationOptionAck {
+}
+
+message AchievementNtf {
+pb.Achievements achievements = 1;
+}
+
+message AchievementRewardReq {
+int32 groupId = 1;
+}
+
+message AchievementRewardAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message AchievementGroupRewardReq {
+int32 groupId = 1;
+}
+
+message AchievementGroupRewardAck {
+repeated pb.UniversalItem items = 1;
+}
+
+message AchievementInfoNtf {
+pb.AchievementProgressData achievementData = 1;
+}
+
+message CookReq {
+repeated pb.Item mainItems = 1;
+repeated pb.Item minorItems = 2;
+pb.CookWay cookWay = 3;
+}
+
+message CookAck {
+int32 relatedMenu = 1;
+int32 unlockedMenu = 2;
+pb.FoodBuff buff = 3;
+}
+
+message CookResetMinorBuffReq {
+int32 idx = 1;
+}
+
+message CookResetMinorBuffAck {
+pb.FoodBuff buff = 4;
+}
+
+message CookSaveCustomMenuReq {
+pb.CookMenu menu = 1;
+int32 idx = 2;
+bool fromBuff = 3;
+}
+
+message CookSaveCustomMenuAck {
+}
+
+message CookModifyCustomMenuNameReq {
+string name = 1;
+int32 idx = 2;
+}
+
+message CookModifyCustomMenuNameAck {
+}
+
+message CookDelCustomMenuReq {
+int32 idx = 1;
+}
+
+message CookDelCustomMenuAck {
+}
+
+message CookNtf {
+pb.Cook info = 1;
+}
+
+message SyncGameInfoReq {
+pb.PBVector3 position = 1;
+pb.CharacterSyncInfo characterInfo = 2;
+int32 playingMusic = 3;
+pb.AchievementSyncInfo achievementInfo = 4;
+repeated pb.MapViewLogInfo mapViewLogInfo = 5;
+pb.LittleItemsShortcutInfo littleItemsShortcut = 6;
+int32 chunkId = 7;
+int32 wid = 8;
+pb.MapViewRecordParam mapViewRecordParam = 9;
+}
+
+message SyncGameInfoAck {
+}
+
+message SyncSettingOptionsReq {
+string content = 1;
+}
+
+message SyncSettingOptionAck {
+}
+
+message RedPointSetReq {
+pb.RedPoints info = 1;
+}
+
+message RedPointSetAck {
+}
+
+message RedPointNtf {
+pb.RedPoints info = 1;
+}
+
+message ItemGotLogsNtf {
+pb.ItemGotLogs itemGotLogs = 1;
+}
+
+message GuideLogsNtf {
+pb.GuideLogs guideLogs = 1;
+}
+
+message GuideChangeNtf {
+map<int32, pb.GuideState> changed = 1;
+}
+
+message GuideLogsInterfaceReq {
+int32 group = 1;
+int32 step = 2;
+}
+
+message GuideLogsInterfaceAck {
+}
+
+message GuideTriggerReq {
+int32 id = 1;
+}
+
+message GuideTriggerAck {
+}
+
+message GuideReadReq {
+repeated int32 ids = 1;
+}
+
+message GuideReadAck {
+repeated pb.Item rewards = 1;
+}
+
+message GuideUnlockReq {
+int32 id = 1;
+}
+
+message GuideUnlockAck {
+int32 id = 1;
+}
+
+message GuideCompleteReq {
+int32 id = 1;
+}
+
+message GuideCompleteAck {
+int32 id = 1;
+}
+
+message DailyDataNtf {
+pb.DailyData dailyData = 1;
+}
+
+message NotifyCollectionItemLimitNtf {
+repeated pb.NotifyCollectionItem items = 1;
+}
+
+message ChangeNickNameReq {
+string nickName = 1;
+}
+
+message ChangeNickNameAck {
+bool ok = 1;
+string nickName = 2;
+}
+
+message PublicChatReq {
+string message = 1;
+}
+
+message PublicChatAck {
+}
+
+message PublicChatNtf {
+int64 id = 1;
+string nickname = 2;
+int32 level = 3;
+int32 curAvatarId = 4;
+string message = 5;
+}
+
+message AnswerQuestionReq {
+int32 questionId = 1;
+int32 optionId = 2;
+}
+
+message AnswerQuestionAck {
+bool correct = 1;
+pb.Items reward = 2;
+}
+
+message AnswerQuestionsNtf {
+pb.AnswerQuestions data = 1;
+}
+
+message FriendOperateReq {
+pb.FriendOperation operation = 1;
+int64 uid = 2;
+}
+
+message FriendOperateAck {
+pb.FriendProfile info = 1;
+}
+
+message FriendSearchReq {
+int64 uid = 1;
+}
+
+message FriendSearchAck {
+pb.FriendProfile info = 1;
+}
+
+message FriendsNtf {
+pb.Friends data = 1;
+}
+
+message DestroyReq {
+}
+
+message DestroyAck {
+}
+
+message SceneSwitchReq {
+int32 wid = 1;
+pb.PBVector3 position = 2;
+int32 cid = 3;
+int32 areaId = 4;
+}
+
+message SceneSwitchAck {
+}
+
+message ChunkSwitchReq {
+int32 cid = 1;
+pb.PBVector3 position = 2;
+int32 wid = 3;
+int32 areaId = 4;
+}
+
+message ChunkSwitchAck {
+}
+
+message SceneWorldLayerSwitchReq {
+pb.SceneWorldLayer worldLayer = 1;
+}
+
+message SceneWorldLayerSwitchAck {
+pb.SceneWorldLayer worldLayer = 1;
+}
+
+message QuestionnaireNtf {
+repeated pb.QuestionnaireInfo questionnaires = 1;
+pb.QuestionnaireInfo newQuestionnaire = 2;
+map<int32, bool> read = 3;
+}
+
+message QuestionnaireReadReq {
+repeated int32 ids = 1;
+}
+
+message QuestionnaireReadAck {
+}
+
+message RedeemCodeUseReq {
+string code = 1;
+}
+
+message RedeemCodeUseAck {
+}
+
+message OperationalActivityNtf {
+map<int32, pb.OperationalActivityInfo> activitys = 1;
+}
+
+message OperationalActivityDataNtf {
+map<int32, pb.OperationalActivityData> activitys = 1;
+}
+
+message TipNoticeNtf {
+repeated pb.TipNotice notices = 1;
+}
+
+message ClientUpdateNtf {
+}
+
+message NewNoticeNtf {
+int32 type = 1;
+int32 id = 2;
+int32 displayPos = 3;
+}
+
+message AssistantNpcHelpReq {
+pb.AssistantNpc npc = 1;
+}
+
+message AssistantNpcHelpAck {
+}
+
+message AssistantNpcFinishReq {
+repeated int32 npcIds = 1;
+}
+
+message AssistantNpcFinishAck {
+}
+
+message AssistantNpcNtf {
+repeated pb.AssistantNpc npcs = 1;
+}
+
+message LeaderboardQueryReq {
+int32 typ = 1;
+int32 id = 2;
+int32 startPos = 3;
+int32 num = 4;
+}
+
+message LeaderboardQueryAck {
+pb.Rank rank = 1;
+}
+
+message LeaderboardQueryMemberReq {
+int32 typ = 1;
+int32 id = 2;
+int64 uid = 3;
+}
+
+message LeaderboardQueryMemberAck {
+pb.RankInfo selfInfo = 1;
+}
+
+message TaskNtf {
+repeated pb.Task changes = 1;
+map<int32, int32> targets = 2;
+}
+
+message TaskGroupNtf {
+repeated pb.TaskGroup changes = 1;
+}
+
+message TempArchiveUpdateReq {
+pb.TempArchiveOperation operation = 1;
+pb.SyncGameInfoReq syncData = 2;
+}
+
+message TempArchiveUpdateAck {
+}
+
+message ClientModuleComponentStateNtf {
+map<int32, pb.ClientComponentState> components = 1;
+}
+
+message ClientModuleClientModuleComponentStateChangeNtf {
+map<int32, pb.ClientComponentState> components = 1;
+}
+
+message GoodsNtf {
+repeated pb.PayGoods goods = 1;
+}
+
+message AddGoodsNtf {
+repeated pb.PayGoods goods = 1;
+}
+
+message DelGoodsNtf {
+repeated int32 goodsIds = 1;
+}
+
+message TipsNtf {
+string errCode = 1;
+repeated pb.UniversalItem overflowItems = 2;
+}
+
+message PowerInfoQueryReq {
+}
+
+message PowerInfoQueryAck {
+int32 power = 1;
+int64 powerRecoverTs = 2;
+}
+
+message NotifyCollectionItem {
+int32 itemId = 1;
+int32 limit = 2;
+int32 destoryedCount = 3;
+}
+
+message ReviewPromptNtf {
+}
+
+message ReviewPromptDisplayedReq {
+}
+
+message ReviewPromptDisplayedAck {
+}
+
+message PlayerDeadReq {
+pb.PBVector3 position = 1;
+int32 chunkId = 2;
+bool createBloodstain = 3;
+}
+
+message PlayerDeadAck {
+pb.BloodstainInfo bloodstainInfo = 1;
+}
+
+message BloodStainNotify {
+int32 chunkId = 1;
+repeated pb.Bloodstain bloodstains = 2;
+pb.Bloodstain selfBloodstain = 3;
+bool otherBloodstainDisabled = 4;
+}
+
+message SetBloodStainEnableReq {
+bool enable = 1;
+}
+
+message SetBloodStainEnableAck {
+pb.BloodstainInfo bloodstainInfo = 1;
+}
+
+message BloodStainInteractReq {
+string bloodstainId = 1;
+}
+
+message BloodStainInteractAck {
+repeated pb.UniversalItem rewards = 1;
+pb.BloodstainInfo bloodstainInfo = 2;
+}
+
+message PowerExchangeReq {
+int32 powerNum = 1;
+int32 itemId = 2;
+}
+
+message PowerExchangeAck {
+repeated pb.UniversalItem rewards = 1;
+}

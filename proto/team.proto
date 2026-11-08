@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message TeamInfoNtf {
+pb.TeamInfo teamInfo = 1;
+}
+
+message ReplacePresetTeamReq {
+int32 idx = 1;
+pb.TeamUsage team = 2;
+pb.PresetTeam presetTeam = 3;
+}
+
+message ReplacePresetTeamAck {
+}
+
+message SavePresetTeamsReq {
+repeated pb.PresetTeam teams = 1;
+int32 mainTeamIdx = 2;
+}
+
+message SavePresetTeamsAck {
+}
+
+message ModifyPresetTeamNameReq {
+int32 idx = 1;
+string name = 2;
+}
+
+message ModifyPresetTeamNameAck {
+}
+
+message DelPresetTeamReq {
+int32 idx = 1;
+}
+
+message DelPresetTeamAck {
+}
+
+message RecordBattleTeamReq {
+int32 idx = 1;
+}
+
+message RecordBattleTeamAck {
+}
+
+message UpdateUsageTeamReq {
+int32 sceneEnum = 1;
+pb.TeamUsage newUsage = 2;
+}
+
+message UpdateUsageTeamAck {
+int32 sceneEnum = 1;
+pb.TeamList teams = 2;
+pb.CharacterRepository characterRepository = 3;
+}

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message EnterGameReq {
+string openId = 1;
+string loginKey = 2;
+int64 accountId = 3;
+bool isEditor = 4;
+int64 sdkAid = 5;
+string distinctID = 6;
+string clientVersion = 7;
+pb.TDClientData tdData = 8;
+string sessionID = 9;
+reserved 10;
+}
+
+message EnterGameAck {
+int64 ts = 1;
+string version = 2;
+int32 openTime = 3;
+pb.DetailUserInfo info = 4;
+string databaseVersion = 5;
+int32 lastEnterTime = 6;
+bool isNewUser = 7;
+int32 code = 8;
+string banNotice = 9;
+pb.MaintainInfo maintainInfo = 10;
+string sessionID = 11;
+bool lastSessionExpired = 12;
+}
+
+message CreateUserReq {
+int32 gender = 1;
+string nickName = 2;
+}
+
+message CreateUserAck {
+pb.DetailUserInfo info = 1;
+bool isValidName = 2;
+}
+
+message EnterGameLoadReq {
+int64 lastSeqID = 1;
+}
+
+message EnterGameLoadAck {
+pb.DetailUserInfo info = 1;
+}
+
+message RandomNameReq {
+}
+
+message RandomNameAck {
+string name = 1;
+}

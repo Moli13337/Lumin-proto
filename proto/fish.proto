@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message FishSetupReq {
+int32 fishBait = 1;
+}
+
+message FishSetupAck {
+}
+
+message FishStartReq {
+}
+
+message FishStartAck {
+int64 startTs = 1;
+int64 finishTs = 2;
+}
+
+message FishReq {
+int64 ts = 1;
+}
+
+message FishAck {
+int32 fish = 1;
+float size = 2;
+repeated pb.Item changes = 3;
+}

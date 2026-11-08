@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message RecordLastPosReq {
+pb.PBVector3 position = 1;
+}
+
+message RecordLastPosAck {
+}
+
+message RecordSpawnPosReq {
+pb.SceneSpawnInfo info = 1;
+}
+
+message RecordSpawnPosAck {
+}
+
+message RecordTmpArchivePosReq {
+pb.SceneTempArchiveInfo info = 1;
+}
+
+message RecordTmpArchivePosAck {
+}
+
+message RecordCheckPosReq {
+int32 uid = 1;
+}
+
+message RecordCheckPosAck {
+}
+
+message EscModifyNicknameReq {
+string nickname = 1;
+}
+
+message EscModifyNicknameAck {
+}
+
+message EscModifySignatureReq {
+string signature = 1;
+}
+
+message EscModifySignatureAck {
+}
+
+message EscModifyAvatarReq {
+int32 avatarId = 1;
+}
+
+message EscModifyAvatarAck {
+}
+
+message EscAvatarNtf {
+repeated int32 getAvatarIds = 1;
+}
+
+message EscModifyAvatarFrameReq {
+int32 avatarFrameId = 1;
+}
+
+message EscModifyAvatarFrameAck {
+}
+
+message EscAvatarFrameNtf {
+repeated int32 getAvatarFrameIds = 1;
+}
+
+message EscModifyTitleReq {
+int32 titleId = 1;
+}
+
+message EscModifyTitleAck {
+}
+
+message EscTitleNtf {
+repeated int32 getTitleIds = 1;
+}
+
+message EscModifyShowCharacterReq {
+repeated int32 showCharacterIds = 1;
+}
+
+message EscModifyShowCharacterAck {
+}
+
+message SavePlayingMusicReq {
+int32 music = 1;
+}
+
+message SavePlayingMusicAck {
+}
+
+message QueryUserProfileReq {
+repeated int64 uids = 1;
+}
+
+message QueryUserProfileAck {
+repeated pb.NormalUserProfile profiles = 1;
+}
+
+message ChangeGenderReq {
+int32 gender = 1;
+}
+
+message ChangeGenderAck {
+int32 curAvatarId = 1;
+map<int32, bool> avatarIds = 2;
+int32 changeTS = 3;
+}

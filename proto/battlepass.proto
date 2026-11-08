@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package pb;
+
+message BattlePassNtf {
+pb.BattlePassDbModel battlePassInfo = 1;
+int64 battlePassBeginTime = 2;
+int64 battlePassEndTime = 3;
+}
+
+message BattlePassBuyLevelReq {
+int32 buyCount = 1;
+}
+
+message BattlePassBuyLevelAck {
+}
+
+message BattlePassClaimTaskReq {
+int32 taskId = 1;
+int32 subTaskId = 2;
+}
+
+message BattlePassClaimTaskAck {
+}
+
+message BattlePassClaimRewardReq {
+int32 level = 1;
+bool premium = 2;
+}
+
+message BattlePassClaimRewardAck {
+repeated pb.UniversalItem items = 1;
+}
